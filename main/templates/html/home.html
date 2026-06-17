@@ -1,10 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поздравление для Александра</title>
+    <!-- Подключаем стиль через тег Django static -->
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
 </head>
 <body>
-    <p>hello world</p>
+
+    <div class="phone-screen">
+        <canvas id="confetti"></canvas>
+
+        <div class="gift-emoji" onclick="celebrate()">✨</div>
+
+        <div class="card-content" id="message">
+            <h1>С праздником, Александр!</h1>
+            <p>Желаю уверенно идти к своим целям, сохранять внутренний баланс и находить возможности в любой ситуации. Пусть каждый проект будет успешным, а каждый день приносит заслуженные результаты. Успехов и крепкого здоровья!</p>
+        </div>
+
+        <button class="action-btn" id="main-btn" onclick="celebrate()">Открыть поздравление</button>
+    </div>
+
+    <!-- Подключаем скрипт через тег Django static -->
+    <script src="{% static 'main/script.js' %}"></script>
 </body>
 </html>
