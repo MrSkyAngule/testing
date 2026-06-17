@@ -40,7 +40,7 @@
             background: rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 40px 25px;
             border-radius: 30px;
             text-align: center;
@@ -51,13 +51,14 @@
             transform: scale(0.9);
             opacity: 0;
             animation: cardEntrance 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.5s, box-shadow 0.5s;
         }
 
         @keyframes cardEntrance {
             to { transform: scale(1); opacity: 1; }
         }
 
+        /* 3D-эффект при взрыве сюрприза */
         .card.flip-animation {
             transform: rotateY(360deg) scale(1.05);
             box-shadow: 0 30px 60px rgba(241, 196, 15, 0.3);
@@ -90,7 +91,7 @@
         }
 
         .text-container {
-            min-height: 110px;
+            min-height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -99,42 +100,42 @@
         p {
             font-size: 1.1rem;
             line-height: 1.6;
-            color: #e0e0e0;
+            color: #94a3b8; /* Изначально скучный серый цвет */
             font-weight: 300;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+
+        /* Стиль для финального крутого текста */
+        p.real-text {
+            color: #e2e8f0;
+            font-size: 1.15rem;
         }
 
         .btn-wrapper {
-            margin-top: 30px;
+            margin-top: 25px;
             min-height: 60px;
         }
 
         .btn {
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
-            color: white;
+            background: linear-gradient(135deg, #64748b, #475569); /* Скучная серая кнопка в начале */
+            color: #cbd5e1;
             border: none;
-            padding: 18px 35px;
-            font-size: 1.2rem;
-            font-weight: 700;
+            padding: 16px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(255, 75, 43, 0.5);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             width: 100%;
             max-width: 280px;
-            animation: bounce 2s infinite ease-in-out;
             transition: all 0.4s ease;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(255, 75, 43, 0.7); }
         }
 
         .particle {
             position: fixed;
             z-index: 999;
             pointer-events: none;
-            font-size: 24px;
+            font-size: 26px;
             user-select: none;
             animation: flyOut 2s cubic-bezier(0.1, 0.8, 0.25, 1) forwards;
         }
@@ -158,10 +159,11 @@
         <h1>С Днём Рождения,</h1>
         <span class="name">Александр!</span>
         <div class="text-container">
-            <p id="congratText">Для тебя подготовлено секретное праздничное послание. Нажми на кнопку ниже, чтобы активировать его!</p>
+            <!-- Скучный стартовый текст -->
+            <p id="congratText">Поздравляю тебя с днем рождения. Желаю счастья в личной жизни, здоровья, успехов в труде и всего самого наилучшего. Пусть всё будет хорошо.</p>
         </div>
         <div class="btn-wrapper">
-            <button class="btn" id="surpriseBtn">Открыть сюрприз 🎁</button>
+            <button class="btn" id="surpriseBtn">Ну, с праздником 😐</button>
         </div>
     </div>
 
@@ -170,9 +172,8 @@
         const card = document.getElementById('mainCard');
         const text = document.getElementById('congratText');
 
-        const shapes = ['🎉', '✨', '⭐', '🎈', '🍾', '🥂', '💥', '👑'];
+        const shapes = ['🎉', '✨', '⭐', '🎈', '🍾', '🥂', '💥', '👑', '🔥'];
 
-        // Безопасная функция звука: если браузер блокирует аудио, скрипт не ломается
         function playSound() {
             try {
                 const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -180,7 +181,6 @@
 
                 const ctx = new AudioContext();
 
-                // 1. Хлопушка
                 const bufferSize = ctx.sampleRate * 0.4;
                 const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
                 const data = buffer.getChannelData(0);
@@ -203,7 +203,6 @@
                 gain.connect(ctx.destination);
                 noise.start();
 
-                // 2. Дзынь бокалов
                 setTimeout(() => {
                     const osc = ctx.createOscillator();
                     const oscGain = ctx.createGain();
@@ -216,9 +215,7 @@
                     osc.start();
                     osc.stop(ctx.currentTime + 1.0);
                 }, 50);
-            } catch (e) {
-                console.log("Аудио заблокировано браузером, продолжаем без звука");
-            }
+            } catch (e) {}
         }
 
         function explodeEffect() {
@@ -226,7 +223,7 @@
             const startX = rect.left + rect.width / 2;
             const startY = rect.top + rect.height / 2;
 
-            for (let i = 0; i < 70; i++) {
+            for (let i = 0; i < 75; i++) {
                 const p = document.createElement('div');
                 p.classList.add('particle');
                 p.textContent = shapes[Math.floor(Math.random() * shapes.length)];
@@ -250,25 +247,24 @@
         }
 
         button.addEventListener('click', () => {
-            // Сначала запускаем гарантированные визуальные эффекты
+            // Эффекты
             card.classList.add('flip-animation');
             explodeEffect();
             setTimeout(explodeEffect, 250);
 
-            // Плавная смена текста
+            // Переключение текста на настоящий
             text.style.opacity = '0';
             setTimeout(() => {
-                text.innerHTML = "<strong>Дорогой Александр!</strong><br>Желаю, чтобы в твоей жизни всегда было железобетонное здоровье, верные друзья рядом и нескончаемый поток крутых возможностей! Пусть всё задуманное сбывается легко, а каждый день приносит кайф и успех. С праздником! 🥂";
+                text.classList.add('real-text');
+                text.innerHTML = "<strong>Ладно, шучу! С праздником! 🥂</strong><br><br>Дорогой Александр! От всей души желаю, чтобы в твоей жизни всегда было железобетонное здоровье, верные друзья рядом и нескончаемый поток крутых возможностей! Пусть всё задуманное сбывается легко, а каждый день приносит кайф и успех!";
                 text.style.opacity = '1';
             }, 400);
 
-            // Красиво убираем саму кнопку
-            button.style.animation = 'none';
+            // Исчезновение кнопки
             button.style.transform = 'scale(0)';
             button.style.opacity = '0';
             setTimeout(() => button.remove(), 400);
 
-            // Пробуем включить звук отдельно
             playSound();
         });
     </script>
