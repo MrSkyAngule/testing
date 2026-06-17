@@ -9,21 +9,20 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-tap-highlight-color: transparent; /* Убирает синюю рамку при клике на телефоне */
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            background: linear-gradient(135deg, #1f4068 0%, #162447 50%, #1a1a2e 100%);
             min-height: 100vh;
-            /* Исправление для мобильного Safari, чтобы контент центрировался строго по высоте экрана */
             min-height: -webkit-fill-available;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
             color: #fff;
-            padding: 20px; /* Боковые отступы, чтобы карточка не липла к краям экрана */
+            padding: 20px;
         }
 
         html {
@@ -31,14 +30,14 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.07);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px); /* Поддержка iOS */
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 30px 20px;
+            padding: 35px 25px;
             border-radius: 24px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             max-width: 400px;
             width: 100%;
             z-index: 10;
@@ -56,18 +55,18 @@
 
         h1 {
             font-size: 1.8rem;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #f1c40f;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             font-weight: 400;
         }
 
         .name {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             display: block;
             font-weight: 800;
             color: #fff;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             letter-spacing: 1px;
             background: linear-gradient(45deg, #ffffff, #f1c40f);
             -webkit-background-clip: text;
@@ -75,9 +74,9 @@
         }
 
         p {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             color: #e0e0e0;
             font-weight: 300;
         }
@@ -92,16 +91,15 @@
             border-radius: 50px;
             cursor: pointer;
             transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
-            width: 100%; /* На мобильных кнопка во всю ширину карточки удобнее для нажатия */
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+            width: 100%;
             max-width: 280px;
         }
 
-        /* На телефонах hover-эффект не нужен, заменяем на active (состояние нажатия) */
         .btn:active {
             background: #ff6b6b;
             transform: scale(0.95);
-            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.2);
         }
 
         .confetti {
@@ -110,7 +108,7 @@
             height: 8px;
             top: -10px;
             z-index: 1;
-            pointer-events: none; /* Чтобы падающие конфетти не мешали кликать по экрану */
+            pointer-events: none;
             animation: fall linear forwards;
         }
 
@@ -126,8 +124,8 @@
     <div class="card">
         <h1>С Днём Рождения,</h1>
         <span class="name">Александр!</span>
-        <p>Желаем масштабных целей, уверенных побед и железобетонного здоровья. Пусть каждый проект завершается успехом, а код твоей жизни пишется легко и без багов!</p>
-        <button class="btn" id="surpriseBtn">Нажми сюда 🎁</button>
+        <p>От всей души желаю крепкого здоровья, неиссякаемой энергии и больших успехов во всех начинаниях. Пусть каждый день приносит новые возможности, верные решения и поводы для искренней улыбки!</p>
+        <button class="btn" id="surpriseBtn">Открыть сюрприз 🎁</button>
     </div>
 
     <script>
@@ -135,7 +133,6 @@
         const colors = ['#e74c3c', '#2ecc71', '#3498db', '#f1c40f', '#9b59b6', '#1abc9c'];
 
         function createConfetti() {
-            // Для мобильных уменьшено количество частиц до 60, чтобы не тормозил процессор
             for (let i = 0; i < 60; i++) {
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
@@ -145,7 +142,7 @@
                 confetti.style.animationDuration = (Math.random() * 2.5 + 1.5) + 's';
                 confetti.style.opacity = Math.random() * 0.6 + 0.4;
                 confetti.style.transform = `scale(${Math.random() * 1.2})`;
-                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0px'; // часть конфетти круглые, часть квадратные
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0px';
 
                 document.body.appendChild(confetti);
 
