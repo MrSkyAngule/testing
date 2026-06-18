@@ -1,111 +1,281 @@
-/* Базовые настройки и шрифты */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1a1a1a;
-    color: #e0e0e0;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
+/* ==========================================================================
+   ⚙️ ПЕРЕМЕННЫЕ И ОСНОВНЫЕ СТИЛИ (Прокачанный Индастриал)
+   ========================================================================== */
+:root {
+    --bg-dark: #121316;          /* Глубокий темный фон */
+    --bg-card: rgba(30, 32, 38, 0.85); /* Полупрозрачные карточки с размытием */
+    --mc-green: #3c8527;         /* Тот самый зеленый из майна */
+    --mc-green-hover: #4da333;
+    --create-orange: #ff9f43;    /* Цвет латуни и шестеренок из Create */
+    --create-gold: #ffd200;
+    --text-main: #e2e8f0;        /* Чистый читаемый текст */
+    --text-muted: #94a3b8;
+    --border-color: #2d3139;
+    --pixel-font: 'Minecraft', sans-serif;
+    --main-font: 'Ubuntu', sans-serif;
 }
 
-/* Шапка сайта */
+body {
+    background-color: var(--bg-dark);
+    /* Паттерн в мелкую сетку, напоминающий чертежи или блоки */
+    background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: var(--text-main);
+    font-family: var(--main-font);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Принудительный пиксельный шрифт для акцентов */
+.pixel-text {
+    font-family: var(--pixel-font) !important;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   🌀 ХИТРАЯ АНИМАЦИЯ ШЕСТЕРЕНОК НА ФОНЕ
+   ========================================================================== */
+.gear-bg {
+    position: fixed;
+    font-size: 15rem;
+    opacity: 0.03;
+    user-select: none;
+    pointer-events: none;
+    z-index: -1;
+    color: var(--create-orange);
+}
+
+.gear-1 {
+    top: -50px;
+    left: -50px;
+    animation: spin-clockwise 25s linear infinite;
+}
+
+.gear-2 {
+    bottom: -50px;
+    right: -50px;
+    animation: spin-counter 30s linear infinite;
+}
+
+@keyframes spin-clockwise { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes spin-counter { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
+
+/* ==========================================================================
+   👑 ШАПКА (Стильный Индастриал-Баннер)
+   ========================================================================== */
 header {
-    background: linear-gradient(135deg, #2e6f40, #1b4d26);
-    color: white;
-    padding: 60px 20px;
+    position: relative;
+    /* Текстурный фон. Замени url на крутой скриншот твоего сервера! */
+    background: url('https://unsplash.com') center/cover no-repeat;
+    padding: 100px 20px;
     text-align: center;
-    border-bottom: 4px solid #ff9f43;
+    border-bottom: 5px solid var(--create-orange);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Затемнение поверх картинки, чтобы текст читался идеально */
+.header-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(18,19,22,0.6), var(--bg-dark));
+    z-index: 1;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
 }
 
 header h1 {
+    font-size: 3.5rem;
+    color: #fff;
     margin: 0;
-    font-size: 3rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.8);
 }
 
 header p {
     font-size: 1.2rem;
-    margin-top: 10px;
-    color: #a3e2b2;
+    color: var(--create-orange);
+    margin: 15px 0 25px 0;
+    font-weight: 500;
 }
 
-/* Главный контейнер */
+/* Индикатор статуса сервера */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 10px #2ecc71;
+}
+
+/* ==========================================================================
+   📦 КОНТЕНТ И КАРТОЧКИ С ЭФФЕКТОМ СТЕКЛА (Glassmorphism)
+   ========================================================================== */
 .container {
-    max-width: 900px;
-    margin: 40px auto;
+    max-width: 1000px;
+    margin: -40px auto 60px auto; /* Слегка налезает на шапку */
     padding: 0 20px;
+    position: relative;
+    z-index: 3;
 }
 
-/* Секции */
-section {
-    background-color: #262626;
-    padding: 30px;
+.card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
     margin-bottom: 30px;
-    border-radius: 8px;
-    border-left: 5px solid #ff9f43;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-h2 {
-    color: #ff9f43;
-    margin-top: 0;
-    font-size: 1.8rem;
-}
-
-/* Особенности мода Create */
-.features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.feature-card {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 6px;
-    border: 1px solid #444;
-}
-
-.feature-card h3 {
-    color: #4cd137;
-    margin-top: 0;
-}
-
-/* Кнопка подачи заявки */
-.cta-btn {
-    display: inline-block;
-    background-color: #ff9f43;
-    color: #1a1a1a;
-    padding: 15px 35px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-}
-
-.cta-btn:hover {
-    background-color: #f39c12;
+.card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 15px 35px rgba(255, 159, 67, 0.05);
 }
 
-.center {
+.section-title {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 159, 67, 0.2);
+    padding-bottom: 10px;
+}
+
+p {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   ⚡ СЕТКА ОСОБЕННОСТЕЙ (Grid Layout)
+   ========================================================================== */
+.grid-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.feature-item {
+    background: rgba(255,255,255,0.02);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.05);
     text-align: center;
-    margin-top: 40px;
+    transition: all 0.25s ease;
 }
 
-/* Футер */
+.feature-item:hover {
+    background: rgba(255, 159, 67, 0.04);
+    border-color: rgba(255, 159, 67, 0.3);
+    transform: scale(1.03);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.feature-item h3 {
+    font-size: 1.2rem;
+    color: var(--create-orange);
+    margin: 0 0 10px 0;
+}
+
+.feature-item p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* ==========================================================================
+   🎮 ОБЪЁМНАЯ КНОПКА ЗАЯВКИ (Minecraft 3D Style)
+   ========================================================================== */
+.cta-card {
+    background: linear-gradient(135deg, rgba(60, 133, 39, 0.2), rgba(27, 77, 38, 0.2));
+    border-color: rgba(60, 133, 39, 0.4);
+}
+
+.text-center { text-align: center; }
+.cta-desc { margin-bottom: 35px; color: var(--text-main); }
+
+.pixel-btn {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    font-family: var(--pixel-font);
+    font-size: 1.3rem;
+    color: #fff;
+    background-color: var(--mc-green);
+    padding: 4px; /* Зазор для рамки */
+    cursor: pointer;
+    /* Создаем пиксельную рамку тенями */
+    box-shadow:
+        0 -4px 0px 0px #224d17 inset,
+        0 4px 0px 0px rgba(255,255,255,0.3) inset;
+    border: 3px solid #000;
+    transition: all 0.1s ease;
+}
+
+.pixel-btn span {
+    display: block;
+    padding: 12px 35px;
+    text-shadow: 2px 2px 0px #1b4d26;
+}
+
+/* Эффект нажатия в стиле кнопок оригинальной игры */
+.pixel-btn:hover {
+    background-color: var(--mc-green-hover);
+}
+
+.pixel-btn:active {
+    transform: translateY(2px);
+    box-shadow:
+        0 0px 0px 0px #224d17 inset,
+        0 2px 0px 0px rgba(0,0,0,0.4) inset;
+}
+
+/* ==========================================================================
+   🪵 ФУТЕР
+   ========================================================================== */
 footer {
     text-align: center;
-    padding: 20px;
-    color: #777;
+    padding: 40px 20px;
+    background: #0b0c0e;
+    color: var(--text-muted);
     font-size: 0.9rem;
-    border-top: 1px solid #333;
-    margin-top: 60px;
+    border-top: 1px solid var(--border-color);
+}
+
+footer p { margin: 5px 0; font-size: 0.9rem; color: var(--text-muted); }
+.disclaimer { font-size: 0.75rem; opacity: 0.5; }
+
+/* Плавное появление элементов */
+.animate-fade {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
