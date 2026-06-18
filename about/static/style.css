@@ -25,13 +25,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* Промышленный строгий шрифт */
     font-family: 'Consolas', 'Courier New', Monaco, monospace;
 }
 
 body {
     background-color: var(--bg-sand);
-    /* Текстурная сетка на фоне, имитирующая чертежи или крафт */
+    /* Инженерная сетка на фоне */
     background-image:
         linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
@@ -46,13 +45,12 @@ body {
 }
 
 /* ==========================================================================
-   КОНТЕЙНЕР: КОРПУС МЕХАНИЗМА
+   КОРПУС МЕХАНИЗМА
    ========================================================================== */
 .project-card {
     background-color: var(--panel-dark);
     width: 100%;
     max-width: 850px;
-    /* Массивная рамка, как у блоков в Minecraft */
     border: 6px solid #3c3f41;
     outline: 3px solid #161718;
     border-radius: 4px;
@@ -61,7 +59,7 @@ body {
     position: relative;
 }
 
-/* Декоративная фоновая шестеренка Create */
+/* Декоративная фоновая шестеренка */
 .project-card::before {
     content: "⚙";
     position: absolute;
@@ -74,7 +72,7 @@ body {
 }
 
 /* ==========================================================================
-   ШАПКА: ИНТЕРФЕЙС МОДУЛЯ
+   ШАПКА ИНТЕРФЕЙСА
    ========================================================================== */
 .header {
     background-color: #161718;
@@ -84,7 +82,7 @@ body {
     position: relative;
 }
 
-/* Имитация заклепок по углам шапки */
+/* Заклепки по углам */
 .header::before, .header::after {
     content: "";
     position: absolute;
@@ -101,7 +99,7 @@ body {
 .header h1 {
     font-size: 2.5rem;
     color: #ffffff;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-shadow: 2px 2px 0px var(--brass-orange);
     text-transform: uppercase;
     font-weight: 900;
@@ -116,7 +114,7 @@ body {
 }
 
 /* ==========================================================================
-   КОНТЕНТНАЯ ЧАСТЬ
+   КОНТЕНТ
    ========================================================================== */
 .content {
     padding: 40px;
@@ -125,21 +123,17 @@ body {
     gap: 30px;
 }
 
-/* Базовый блок секции (Индустриальный контейнер) */
 .section-blue, .section-orange {
     background-color: var(--panel-inner);
     border: 2px solid var(--border-metal);
     padding: 25px;
     border-radius: 3px;
-    position: relative;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.6);
 }
 
-/* Индикаторы линий напряжения/стрелки слева */
 .section-blue { border-left: 6px solid var(--zinc-blue); }
 .section-orange { border-left: 6px solid var(--brass-orange); }
 
-/* Заголовки секций в стиле табло */
 .section-blue h2, .section-orange h2 {
     font-size: 1.4rem;
     margin-bottom: 15px;
@@ -152,7 +146,6 @@ body {
 .section-blue h2 { color: var(--zinc-blue); }
 .section-orange h2 { color: var(--brass-orange); }
 
-/* Добавление иконки шестеренки перед заголовком */
 .section-blue h2::before, .section-orange h2::before {
     content: "⚙";
     display: inline-block;
@@ -160,18 +153,16 @@ body {
 }
 .section-orange h2::before { animation-direction: reverse; }
 
-/* Текстовые абзацы */
 .content p {
     color: var(--text-main);
     font-size: 1rem;
-    text-align: justify;
     background: rgba(255, 255, 255, 0.02);
     padding: 10px;
     border-radius: 2px;
 }
 
 /* ==========================================================================
-   ПАНЕЛЬ ДАТЧИКОВ И ЦИФР (STATS GRID)
+   ПАНЕЛЬ ПРИБОРОВ (МЕТРИКИ)
    ========================================================================== */
 .stats-grid {
     display: grid;
@@ -180,7 +171,6 @@ body {
     margin-top: 10px;
 }
 
-/* Ячейка прибора измерения (Спидометр / Стресс-метр) */
 .stat-box {
     background: linear-gradient(135deg, #1f2023, #161718);
     border: 2px solid var(--border-metal);
@@ -192,24 +182,20 @@ body {
     transition: transform 0.2s ease;
 }
 
-/* Эффект наведения на прибор */
 .stat-box:hover {
     transform: translateY(-3px);
     border-top-color: var(--brass-orange);
 }
 
-/* Электронное/механическое число */
 .stat-box .number {
     font-size: 2rem;
     font-weight: bold;
     color: #ffffff;
     display: block;
-    font-family: 'Courier New', monospace;
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
     margin-bottom: 5px;
 }
 
-/* Подпись прибора */
 .stat-box .label {
     font-size: 0.75rem;
     color: var(--text-muted);
@@ -219,7 +205,7 @@ body {
 }
 
 /* ==========================================================================
-   ПОДВАЛ (МЕТАЛЛИЧЕСКАЯ ПЛАСТИНА)
+   ПОДВАЛ
    ========================================================================== */
 .footer {
     background-color: #111213;
@@ -231,15 +217,11 @@ body {
     letter-spacing: 1px;
 }
 
-/* ==========================================================================
-   АНИМАЦИИ ВРАЩЕНИЯ
-   ========================================================================== */
 @keyframes gear-rotate {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-/* Адаптивность для мобильных инженеров */
 @media (max-width: 600px) {
     body { padding: 10px; }
     .header h1 { font-size: 1.8rem; }

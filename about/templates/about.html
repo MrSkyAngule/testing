@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О проекте | Create Style</title>
-    <!-- Правильное подключение статики в Django -->
+    <title>О проекте | Моя Инженерная Фабрика</title>
+    <!-- Безопасное подключение внешнего файла стилей в Django -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
@@ -13,51 +13,37 @@
     <div class="project-card">
         <!-- ШАПКА -->
         <div class="header">
-            <!-- Сюда передается название проекта или пишется вручную -->
-            <h1>{{ project_name|default:"НАЗВАНИЕ ПРОЕКТА" }}</h1>
+            <h1>Моя Инженерная Фабрика</h1>
             <div class="subtitle">Инженерный модуль / Статус: Активен</div>
         </div>
 
-        <!-- ОСНОВНОЙ БЛОК С ТЕКСТОМ -->
+        <!-- ОСНОВНОЙ КОНТЕНТ -->
         <div class="content">
 
-            <!-- СЕКЦИЯ 1: ОПИСАНИЕ -->
+            <!-- СЕКЦИЯ 1 -->
             <div class="section-blue">
                 <h2>О проекте</h2>
-                <!-- Выведет текст из контекста Django. Если текста нет, покажет стандартную заглушку. -->
-                <p>
-                    {% if project_description %}
-                        {{ project_description }}
-                    {% else %}
-                        Удалите этот текст и напишите здесь главную суть вашего проекта. Чем вы занимаетесь, какую задачу решаете и почему это круто. Стиль Create подразумевает механизмы, автоматизацию и креатив.
-                    {% endif %}
-                </p>
+                <p>Мы строим автоматические заводы на базе андезитовых сплавов...</p>
             </div>
 
-            <!-- СЕКЦИЯ 2: ЦЕЛИ -->
+            <!-- СЕКЦИЯ 2 -->
             <div class="section-orange">
                 <h2>Наши Цели</h2>
-                <p>
-                    {% if project_goals %}
-                        {{ project_goals }}
-                    {% else %}
-                        Напишите здесь, каких результатов вы хотите достичь. Например: создание идеальной фабрики, автоматизация процессов или разработка уникальных механизмов для игроков.
-                    {% endif %}
-                </p>
+                <p>Построить самую быструю линию сборки предметов.</p>
             </div>
 
-            <!-- БЛОК С ЦИФРАМИ / МЕТРИКАМИ -->
+            <!-- ИНЖЕНЕРНЫЕ ПРИБОРЫ (ДАТЧИКИ) -->
             <div class="stats-grid">
                 <div class="stat-box">
-                    <span class="number">{{ version|default:"v1.0" }}</span>
+                    <span class="number">v2.4</span>
                     <span class="label">Версия сборки</span>
                 </div>
                 <div class="stat-box">
-                    <span class="number">{{ automation_rate|default:"100%" }}</span>
+                    <span class="number">85%</span>
                     <span class="label">Автоматизация</span>
                 </div>
                 <div class="stat-box">
-                    <span class="number">{{ speed_rpm|default:"256 RPM" }}</span>
+                    <span class="number">128 RPM</span>
                     <span class="label">Скорость вращения</span>
                 </div>
             </div>
@@ -66,7 +52,7 @@
 
         <!-- ПОДВАЛ -->
         <div class="footer">
-            © {% now "Y" %} Создано инженерами проекта. Все права защищены механизмом.
+            © 2026 Создано инженерами проекта. Все права защищены механизмом.
         </div>
     </div>
 
