@@ -1,229 +1,139 @@
-/* ==========================================================================
-   ИНЖЕНЕРНЫЕ НАСТРОЙКИ (ЦВЕТОВАЯ ПАЛИТРА МОДА CREATE)
-   ========================================================================== */
-:root {
-    --bg-sand: #d1c2ac;       /* Цвет крафтовой бумаги / известняка */
-    --panel-dark: #232426;    /* Индустриальный темный металл */
-    --panel-inner: #1a1b1d;   /* Глубокий черный для блоков интерфейса */
-
-    /* Сплавы и Металлы */
-    --brass-orange: #d17836;  /* Латунь (основной акцент) */
-    --copper-red: #b85b37;    /* Медь */
-    --andesite-gray: #5c6265; /* Андезитовый сплав */
-    --zinc-blue: #518ca4;     /* Цинк / Чертежная бумага */
-
-    /* Текст и границы */
-    --text-main: #e2e3e5;     /* Светло-серый читаемый текст */
-    --text-muted: #8e9297;    /* Тусклый текст для подписей */
-    --border-metal: #40444b;  /* Клепаная металлическая граница */
-}
-
-/* ==========================================================================
-   ОБЩИЕ СТИЛИ СТРАНИЦЫ
-   ========================================================================== */
+/* Сброс базовых стилей и шрифты */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Consolas', 'Courier New', Monaco, monospace;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: var(--bg-sand);
-    /* Инженерная сетка на фоне */
-    background-image:
-        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
-    background-size: 20px 20px;
-    color: var(--text-main);
-    line-height: 1.5;
-    padding: 40px 20px;
+    background-color: #1e1e24; /* Темный индустриальный фон */
+    color: #e2e8f0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 20px;
 }
 
-/* ==========================================================================
-   КОРПУС МЕХАНИЗМА
-   ========================================================================== */
+/* Контейнер карточки проекта */
 .project-card {
-    background-color: var(--panel-dark);
+    background-color: #2d2d35; /* Андезитовый оттенок */
+    border: 2px solid #4a4a5a;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
     width: 100%;
-    max-width: 850px;
-    border: 6px solid #3c3f41;
-    outline: 3px solid #161718;
-    border-radius: 4px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     overflow: hidden;
-    position: relative;
 }
 
-/* Декоративная фоновая шестеренка */
-.project-card::before {
-    content: "⚙";
-    position: absolute;
-    bottom: -30px;
-    left: -30px;
-    font-size: 16rem;
-    color: rgba(209, 120, 54, 0.04);
-    pointer-events: none;
-    animation: gear-rotate 25s linear infinite;
-}
-
-/* ==========================================================================
-   ШАПКА ИНТЕРФЕЙСА
-   ========================================================================== */
+/* Шапка карточки */
 .header {
-    background-color: #161718;
-    padding: 30px;
-    border-bottom: 4px solid var(--brass-orange);
-    text-align: center;
-    position: relative;
+    background: linear-gradient(135deg, #3a3a48, #25252e);
+    padding: 24px;
+    border-bottom: 2px solid #4a4a5a;
 }
-
-/* Заклепки по углам */
-.header::before, .header::after {
-    content: "";
-    position: absolute;
-    bottom: 8px;
-    width: 6px;
-    height: 6px;
-    background: var(--andesite-gray);
-    border-radius: 50%;
-    box-shadow: 0 0 2px rgba(0,0,0,0.8);
-}
-.header::before { left: 12px; }
-.header::after { right: 12px; }
 
 .header h1 {
-    font-size: 2.5rem;
-    color: #ffffff;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 0px var(--brass-orange);
+    font-size: 24px;
+    color: #f1f5f9;
+    margin-bottom: 6px;
     text-transform: uppercase;
-    font-weight: 900;
+    letter-spacing: 0.5px;
 }
 
-.header .subtitle {
-    color: var(--zinc-blue);
-    font-size: 0.9rem;
-    margin-top: 8px;
+.subtitle {
+    font-size: 13px;
+    color: #a7f3d0; /* Зеленый активный статус */
+    font-weight: 600;
     letter-spacing: 1px;
-    text-transform: uppercase;
 }
 
-/* ==========================================================================
-   КОНТЕНТ
-   ========================================================================== */
+/* Контентная часть */
 .content {
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    padding: 24px;
 }
 
+/* Стилизация текстовых блоков */
 .section-blue, .section-orange {
-    background-color: var(--panel-inner);
-    border: 2px solid var(--border-metal);
-    padding: 25px;
-    border-radius: 3px;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.6);
+    margin-bottom: 20px;
+    padding: 16px;
+    border-radius: 8px;
+    border-left: 4px solid;
 }
 
-.section-blue { border-left: 6px solid var(--zinc-blue); }
-.section-orange { border-left: 6px solid var(--brass-orange); }
-
-.section-blue h2, .section-orange h2 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.section-blue {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-left-color: #3b82f6; /* Синий акцент */
 }
 
-.section-blue h2 { color: var(--zinc-blue); }
-.section-orange h2 { color: var(--brass-orange); }
-
-.section-blue h2::before, .section-orange h2::before {
-    content: "⚙";
-    display: inline-block;
-    animation: gear-rotate 8s linear infinite;
+.section-blue h2 {
+    color: #60a5fa;
+    font-size: 18px;
+    margin-bottom: 8px;
 }
-.section-orange h2::before { animation-direction: reverse; }
+
+.section-orange {
+    background-color: rgba(249, 115, 22, 0.1);
+    border-left-color: #f97316; /* Латунный/Медный акцент */
+}
+
+.section-orange h2 {
+    color: #fb923c;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
 
 .content p {
-    color: var(--text-main);
-    font-size: 1rem;
-    background: rgba(255, 255, 255, 0.02);
-    padding: 10px;
-    border-radius: 2px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #cbd5e1;
 }
 
-/* ==========================================================================
-   ПАНЕЛЬ ПРИБОРОВ (МЕТРИКИ)
-   ========================================================================== */
+/* Сетка со статистикой */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-    margin-top: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
 }
 
 .stat-box {
-    background: linear-gradient(135deg, #1f2023, #161718);
-    border: 2px solid var(--border-metal);
-    border-top: 3px solid var(--copper-red);
-    padding: 20px 15px;
+    background-color: #232329;
+    border: 1px solid #4a4a5a;
+    border-radius: 8px;
+    padding: 16px;
     text-align: center;
-    border-radius: 3px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .stat-box:hover {
-    transform: translateY(-3px);
-    border-top-color: var(--brass-orange);
+    transform: translateY(-2px);
+    border-color: #f97316; /* Подсветка при наведении */
 }
 
 .stat-box .number {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffffff;
     display: block;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #f8fafc;
+    margin-bottom: 4px;
 }
 
 .stat-box .label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
     display: block;
+    font-size: 12px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* ==========================================================================
-   ПОДВАЛ
-   ========================================================================== */
+/* Подвал */
 .footer {
-    background-color: #111213;
-    padding: 20px;
+    background-color: #232329;
+    padding: 16px;
     text-align: center;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    border-top: 3px solid var(--andesite-gray);
-    letter-spacing: 1px;
-}
-
-@keyframes gear-rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@media (max-width: 600px) {
-    body { padding: 10px; }
-    .header h1 { font-size: 1.8rem; }
-    .content { padding: 20px; }
+    font-size: 12px;
+    color: #64748b;
+    border-top: 1px solid #3a3a48;
 }
