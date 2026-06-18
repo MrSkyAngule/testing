@@ -1,233 +1,155 @@
-/* Профессиональные сбросы и аппаратное ускорение */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    background-color: #040408;
+    background-color: #050508; /* Глубокий темный */
     color: #ffffff;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
     overflow-x: hidden;
-    perspective: 1000px; /* Включает глубину для 3D JS-эффектов */
+    display: flex;
+    align-items: center;
 }
 
-/* Сглаженный живой фон */
-.create-bg-blur {
+/* Клетчатое поле на CSS с использованием линейных градиентов */
+.grid-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
-    pointer-events: none;
+    /* Создаем сетку 40px на 40px */
+    background-size: 40px 40px;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    /* Кастомная CSS-переменная для эффекта параллакса через JS */
+    transform: translate(var(--mx, 0px), var(--my, 0px));
+    will-change: transform;
 }
 
-.blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(140px);
-    opacity: 0.12;
-    will-change: transform; /* Оптимизация производительности видеокарты */
-    transition: transform 0.6s cubic-bezier(0.1, 0.8, 0.2, 1);
-}
-
-.blob-1 { width: 500px; height: 500px; background: #4f46e5; top: -10%; left: -10%; }
-.blob-2 { width: 600px; height: 600px; background: #9333ea; bottom: -15%; right: -10%; }
-
-/* Контейнер страницы */
-.about-page {
-    width: 100%;
-    max-width: 840px;
+/* Левая панель с текстом */
+.about-sidebar {
     position: relative;
     z-index: 2;
+    width: 100%;
+    max-width: 550px; /* Ограничиваем ширину текста слева */
+    padding: 60px;
+    background: linear-gradient(to right, #050508 70%, transparent); /* Мягкое затенение сетки под текстом */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
-/* Карта с эффектом стекла (Glassmorphism) */
-.about-card {
-    background: rgba(14, 14, 26, 0.65);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 36px;
-    padding: 60px 50px;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
-    transform-style: preserve-3d; /* Позволяет дочерним элементам выдавливаться вперед */
-    transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
-/* Заголовки */
-.about-header {
-    text-align: center;
-    margin-bottom: 50px;
-    transform: translateZ(30px); /* 3D выдавливание при наклоне мыши */
-}
-
+/* Текстовые элементы */
 .badge-create {
-    display: inline-block;
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(147, 51, 234, 0.15));
-    color: #a78bfa;
-    padding: 6px 18px;
-    border-radius: 100px;
-    font-size: 0.8rem;
+    align-self: flex-start;
+    background: rgba(99, 102, 241, 0.1);
+    color: #818cf8;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 24px;
-    border: 1px solid rgba(167, 139, 250, 0.2);
+    border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
-.about-title {
-    font-size: 3rem;
+.project-title {
+    font-size: 2.8rem;
     font-weight: 800;
     line-height: 1.15;
-    margin-bottom: 18px;
-    letter-spacing: -0.7px;
+    letter-spacing: -0.5px;
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #6366f1 20%, #d946ef 80%);
+    background: linear-gradient(135deg, #6366f1, #d946ef);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.about-subtitle {
-    color: #9ca3af;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    max-width: 620px;
-    margin: 0 auto;
-}
-
-/* Сетка карточек */
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 50px;
-    transform: translateZ(20px);
-}
-
-/* Высокотехнологичные карточки со скрытыми CSS-переменными для JS-свечения */
-.info-item {
-    position: relative;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    border-radius: 24px;
-    padding: 28px;
+.info-block {
     display: flex;
+    flex-direction: column;
     gap: 20px;
-    overflow: hidden;
-    transition: background 0.3s, border-color 0.3s;
 }
 
-/* Эффект матового светового следа (управляется через JS) */
-.info-item::before {
-    content: '';
-    position: absolute;
-    top: var(--y, 0);
-    left: var(--x, 0);
-    width: 250px;
-    height: 250px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.info-item:hover::before {
-    opacity: 1;
-}
-
-.info-item:hover {
-    border-color: rgba(99, 102, 241, 0.25);
-    background: rgba(255, 255, 255, 0.04);
-}
-
-.info-icon {
-    font-size: 1.5rem;
-    background: rgba(255, 255, 255, 0.04);
-    width: 52px;
-    height: 52px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 16px;
-    flex-shrink: 0;
-}
-
-.info-text h3 {
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 6px;
-}
-
-.info-text p {
+.project-desc {
     color: #9ca3af;
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
-/* Инновационная кнопка */
-.about-footer {
+/* Список характеристик */
+.specs-list {
+    list-style: none;
     display: flex;
-    justify-content: center;
-    transform: translateZ(40px);
+    flex-direction: column;
+    gap: 12px;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    padding-left: 20px;
 }
 
+.specs-list li {
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+.specs-list li span {
+    color: #ffffff;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+/* Кнопка возврата */
 .btn-back {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    background: #ffffff;
-    color: #040408;
+    gap: 10px;
+    background: transparent;
+    color: #ffffff;
     text-decoration: none;
-    padding: 16px 36px;
+    padding: 12px 24px;
     font-weight: 600;
-    font-size: 1rem;
-    border-radius: 18px;
-    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.08);
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s, box-shadow 0.3s;
+    font-size: 0.9rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-back:hover {
-    background: #f1f5f9;
+    background: #ffffff;
+    color: #050508;
+    border-color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.25);
 }
 
 .arrow-icon {
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: transform 0.3s ease;
 }
 
 .btn-back:hover .arrow-icon {
-    transform: translateX(-5px);
+    transform: translateX(-4px);
 }
 
-/* Классы для JS-анимации появления (Scroll Reveal) */
-.reveal {
-    opacity: 0;
-    transform: translateY(20px) translateZ(0);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0) translateZ(0);
-}
-
-/* Мобильная адаптация */
+/* Мобильная адаптивность */
 @media (max-width: 768px) {
-    .about-card { padding: 40px 24px; border-radius: 28px; transform: none !important; }
-    .about-title { font-size: 2.2rem; }
-    .info-grid { grid-template-columns: 1fr; gap: 16px; }
-    .btn-back { width: 100%; justify-content: center; }
+    .about-sidebar {
+        max-width: 100%;
+        padding: 40px 24px;
+        background: #050508; /* На мобильных полностью перекрываем фон для читаемости */
+    }
+    .project-title {
+        font-size: 2.2rem;
+    }
 }
