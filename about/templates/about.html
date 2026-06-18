@@ -1,54 +1,74 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Section - Create Style</title>
-    <link rel="stylesheet" href="/about/style.css">
+    <title>О сайте | Premium Create</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <section class="about-section">
-        <div class="about-container">
+    <!-- Живой интерактивный фон -->
+    <div class="create-bg-blur">
+        <div class="blob blob-1" id="blob1"></div>
+        <div class="blob blob-2" id="blob2"></div>
+    </div>
 
-            <!-- Левая колонка: Визуальный контент -->
-            <div class="about-visual">
-                <div class="image-wrapper">
-                    <!-- Замените URL на вашу картинку -->
-                    <img src="https://unsplash.com" alt="Creative Project">
-                    <div class="decor-badge" id="counter-badge">0+ Идей</div>
-                </div>
-            </div>
+    <section class="about-page">
+        <!-- Главная карточка с эффектом 3D-наклона -->
+        <div class="about-card" id="mainCard">
 
-            <!-- Правая колонка: Текстовый контент -->
-            <div class="about-content">
-                <span class="subtitle">О проекте</span>
-                <h2 class="title">Мы создаем <span class="highlight">будущее</span> цифрового пространства</h2>
-
-                <p class="description">
-                    Здесь вы можете разместить главное описание вашего проекта. Расскажите о вашей миссии, подходе к работе и том, какую проблему вы решаете. Этот текст должен вдохновлять и вовлекать пользователя с первых секунд.
+            <header class="about-header reveal">
+                <span class="badge-create">Спецификация ресурса</span>
+                <h1 class="about-title">Пространство для <span class="gradient-text">созидания</span></h1>
+                <p class="about-subtitle">
+                    Эта страница содержит технические параметры и концептуальные данные о текущей архитектуре веб-ресурса.
                 </p>
+            </header>
 
-                <!-- Интерактивные карточки преимуществ -->
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="icon">✨</div>
-                        <h3>Креативность</h3>
-                        <p>Короткое описание уникального свойства.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="icon">⚡</div>
+            <!-- Сетка с динамической подсветкой мыши -->
+            <div class="info-grid">
+                <div class="info-item reveal">
+                    <div class="info-icon">⚡</div>
+                    <div class="info-text">
                         <h3>Скорость</h3>
-                        <p>Быстрая реализация любых ваших задумок.</p>
+                        <p>Оптимизированный рендеринг и отсутствие тяжелых библиотек выдают максимальный FPS.</p>
                     </div>
                 </div>
 
-                <!-- Кнопка действия -->
-                <div class="action-area">
-                    <button class="btn-create" id="actionBtn">Узнать больше</button>
+                <div class="info-item reveal">
+                    <div class="info-icon">🎨</div>
+                    <div class="info-text">
+                        <h3>Интерфейс</h3>
+                        <p>Стиль Create с мягким неоновым свечением ориентирован на удобство и эстетику.</p>
+                    </div>
+                </div>
+
+                <div class="info-item reveal">
+                    <div class="info-icon">🔒</div>
+                    <div class="info-text">
+                        <h3>Надежность</h3>
+                        <p>Ванильный изолированный код минимизирует уязвимости и ошибки выполнения.</p>
+                    </div>
+                </div>
+
+                <div class="info-item reveal">
+                    <div class="info-icon">⚙️</div>
+                    <div class="info-text">
+                        <h3>Сборка</h3>
+                        <p>Версия: 3.0.0-vanilla. Архитектура построена на чистых веб-стандартах.</p>
+                    </div>
                 </div>
             </div>
+
+            <footer class="about-footer reveal">
+                <a href="index.html" class="btn-back">
+                    <svg class="arrow-icon" viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                    <span>На главную</span>
+                </a>
+            </footer>
 
         </div>
     </section>
