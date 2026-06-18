@@ -1,29 +1,27 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const counters = document.querySelectorAll('.count-up');
+document.addEventListener("DOMContentLoaded", () => {
 
-    // Анимация плавного набора числовых показателей телеметрии (Create-стиль)
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const suffix = counter.getAttribute('data-suffix') || '';
-        const duration = 2000; // Продолжительность наката цифр в мс
-        const startTime = performance.now();
+    // 1. Анимация счетчика на плавающем бейдже
+    const badge = document.getElementById("counter-badge");
+    let count = 0;
+    const target = 150; // Конечная цифра для вашего счетчика (например, 150+ проектов/идей)
+    const speed = 2000 / target; // Скорость анимации в миллисекундах
 
-        const updateCount = (currentTime) => {
-            const elapsedTime = currentTime - startTime;
-            const progress = Math.min(elapsedTime / duration, 1);
+    const updateCounter = () => {
+        if (count < target) {
+            count += Math.ceil(target / 100); // Шаг анимации
+            if (count > target) count = target;
+            badge.innerText = `${count}+ Идей`;
+            setTimeout(updateCounter, speed);
+        }
+    };
 
-            // Функция сглаживания (Ease Out) для замедления к концу
-            const easeProgress = progress * (2 - progress);
-            const currentValue = Math.floor(easeProgress * target);
+    // Запуск счетчика с небольшой задержкой при загрузке страницы
+    setTimeout(updateCounter, 500);
 
-            counter.innerText = currentValue + suffix;
-
-            if (progress < 1) {
-                requestAnimationFrame(updateCount);
-            } else {
-                counter.innerText = target + suffix;
-            }
-        };
-        requestAnimationFrame(updateCount);
+    // 2. Интерактив для кнопки (эффект клика)
+    const actionBtn = document.getElementById("actionBtn");
+    actionBtn.addEventListener("click", () => {
+        // Здесь вы можете прописать логику, например, скролл к следующей секции или открытие модального окна
+        alert("Кнопка работает! Здесь может быть открытие формы или переход.");
     });
 });

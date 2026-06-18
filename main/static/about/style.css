@@ -1,290 +1,171 @@
-/* Подключаем качественный шрифт для инженерных интерфейсов */
-@import url('https://googleapis.com');
-
+/* Общие сбросы стилей для чистого отображения */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-    /* Фон: глубокий темный андезит с медным и латунным свечением на заднем плане */
-    background-color: #121214;
-    background-image:
-        radial-gradient(circle at 10% 10%, rgba(224, 130, 68, 0.08) 0, transparent 40%),  /* Медное свечение */
-        radial-gradient(circle at 90% 90%, rgba(230, 175, 46, 0.06) 0, transparent 40%),  /* Латунное свечение */
-        radial-gradient(circle at 50% 50%, rgba(100, 149, 137, 0.04) 0, transparent 50%); /* Цинковый бирюзовый оттенок */
-    color: #e2e8f0;
+    background-color: #0b0b0f; /* Глубокий темный фон в стиле креативных студий */
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
-    perspective: 1200px;
 }
 
-/* Контейнер карточки — полированный темный андезит со стеклянной текстурой */
-.project-card {
-    background: rgba(30, 30, 36, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(139, 144, 153, 0.15); /* Андезитовая рамка */
-    border-radius: 20px;
-    max-width: 600px;
+/* Контейнер секции */
+.about-section {
     width: 100%;
-    overflow: hidden;
-    position: relative;
-    box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.03),
-        0 30px 60px -15px rgba(0, 0, 0, 0.7),
-        0 0 50px -10px rgba(224, 130, 68, 0.05);
-
-    transform-style: preserve-3d;
-    transition: transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
-    will-change: transform;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
 }
 
-.project-card:hover {
-    border-color: rgba(230, 175, 46, 0.3); /* Плавное латунное свечение при наведении */
-    box-shadow:
-        0 0 0 1px rgba(230, 175, 46, 0.1),
-        0 40px 80px -15px rgba(0, 0, 0, 0.85),
-        0 0 60px -5px rgba(224, 130, 68, 0.15);
-}
-
-/* Инженерная градиентная полоса Create (Латунь -> Медь -> Цинк -> Латунь) */
-.project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 200%; height: 3px;
-    background: linear-gradient(90deg, #e6af2e, #e08244, #649589, #e6af2e);
-    background-size: 50% 100%;
-    animation: machineRun 8s linear infinite;
-    z-index: 10;
-}
-
-@keyframes machineRun {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-/* Внутреннее свечение подложки */
-.card-glow-bg {
-    position: absolute;
-    top: -10%; right: -10%;
-    width: 50%; height: 50%;
-    background: radial-gradient(circle, rgba(230, 175, 46, 0.08) 0%, transparent 70%);
-    z-index: 0;
-    pointer-events: none;
-    filter: blur(30px);
-}
-
-/* Шапка карточки */
-.header {
-    background: radial-gradient(circle at top left, rgba(230, 175, 46, 0.05), transparent);
-    padding: 36px 32px 24px;
-    border-bottom: 1px solid rgba(139, 144, 153, 0.12);
-    transform: translateZ(30px);
-}
-
-.header h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 8px;
-    letter-spacing: -0.02em;
-    background: linear-gradient(180deg, #ffffff 40%, #a1a1aa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Статус-индикатор в стиле электронных ламп или шестеренок */
-.subtitle {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #e6af2e; /* Фирменная золото-латунь */
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.subtitle::before {
-    content: '';
-    width: 6px; height: 6px;
-    background-color: #e6af2e;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #e6af2e;
-    animation: gearPulse 2s infinite alternate;
-}
-
-@keyframes gearPulse {
-    0% { transform: scale(0.9); opacity: 0.5; }
-    100% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 12px #e08244; }
-}
-
-.content {
-    padding: 32px;
-    transform: translateZ(20px);
-}
-
-/* Текстовые блоки: Андезит + Металлы */
-.section-blue, .section-orange {
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.02);
-    background: rgba(255, 255, 255, 0.01);
-    transition: background 0.3s ease;
-}
-
-.section-blue:hover, .section-orange:hover {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-/* Цинковый / Насыщенный сине-серый сплав */
-.section-blue {
-    border-left: 4px solid #649589;
-    background: linear-gradient(135deg, rgba(100, 149, 137, 0.06), transparent);
-}
-.section-blue h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    color: #8cb8ae;
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-/* Медный тепло-оранжевый сплав */
-.section-orange {
-    border-left: 4px solid #e08244;
-    background: linear-gradient(135deg, rgba(224, 130, 68, 0.06), transparent);
-}
-.section-orange h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    color: #fca56a;
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.content p {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: #b1b5bc;
-    font-weight: 400;
-}
-
-/* Сетка со статистикой */
-.stats-grid {
+.about-container {
+    max-width: 1200px;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 16px;
-    margin-top: 32px;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
 }
 
-/* Механические виджеты со световым треком меди/латуни */
-.stat-box {
-    background: rgba(20, 20, 25, 0.5);
-    border: 1px solid rgba(139, 144, 153, 0.12);
-    border-radius: 12px;
-    padding: 22px 16px;
-    text-align: center;
+/* Левая сторона: Изображение и декор */
+.about-visual {
     position: relative;
+}
+
+.image-wrapper {
+    position: relative;
+    border-radius: 24px;
     overflow: hidden;
-    transition: transform 0.2s ease, border-color 0.3s ease, background 0.3s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* Динамическая JS подсветка контура (цвет меди) */
-.stat-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 12px;
-    padding: 1px;
-    background: radial-gradient(
-        110px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-        rgba(224, 130, 68, 0.25),
-        transparent 80%
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-}
-
-/* Внутренний подсвет фона за курсором (латунь) */
-.stat-box::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: radial-gradient(
-        130px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-        rgba(230, 175, 46, 0.05),
-        transparent 80%
-    );
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.stat-box:hover {
-    transform: translateY(-3px);
-    background: rgba(35, 35, 40, 0.6);
-    border-color: rgba(139, 144, 153, 0.25);
-}
-
-.stat-box:hover::before,
-.stat-box:hover::after {
-    opacity: 1;
-}
-
-.stat-box * {
-    position: relative;
-    z-index: 2;
-}
-
-/* Металлический блеск цифр */
-.stat-box .number {
+.image-wrapper img {
+    width: 100%;
+    height: auto;
     display: block;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 26px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.image-wrapper:hover img {
+    transform: scale(1.03); /* Мягкий зум при наведении */
+}
+
+/* Плавающий бейдж */
+.decor-badge {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: linear-gradient(135deg, #6366f1, #a855f7); /* Яркий градиент "Create" */
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* Правая сторона: Текст */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    color: #818cf8;
+    font-weight: 600;
+}
+
+.title {
+    font-size: 2.8rem;
+    line-height: 1.2;
     font-weight: 700;
-    letter-spacing: -0.03em;
-    margin-bottom: 4px;
-    background: linear-gradient(135deg, #ffffff 40%, #e6af2e 150%);
+}
+
+.highlight {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.stat-box .label {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    color: #767d8a;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
+.description {
+    color: #9ca3af;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
-/* Подвал */
-.footer {
-    background: rgba(15, 15, 18, 0.6);
+/* Сетка карточек преимуществ */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.feature-card {
+    background: #161622;
     padding: 20px;
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #4f555f;
-    border-top: 1px solid rgba(139, 144, 153, 0.1);
-    letter-spacing: 0.5px;
+    border-radius: 16px;
+    border: 1px solid #232336;
+    transition: border-color 0.3s ease;
+}
+
+.feature-card:hover {
+    border-color: #4f46e5;
+}
+
+.feature-card .icon {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.feature-card p {
+    color: #6b7280;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Кнопка */
+.btn-create {
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-create:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 968px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .title {
+        font-size: 2.2rem;
+    }
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
 }

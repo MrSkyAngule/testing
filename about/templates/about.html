@@ -1,86 +1,57 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Инженерный Модуль | Моя Инженерная Фабрика</title>
-    <link rel="stylesheet" href="{% static 'about/style.css' %}">
+    <title>About Section - Create Style</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Живой фон: Инженерная сетка чертежа -->
-    <div class="blueprint-grid"></div>
-    <div class="ambient-glow"></div>
 
-    <!-- Главный контейнер терминала -->
-    <main class="terminal-container">
+    <section class="about-section">
+        <div class="about-container">
 
-        <!-- Панель управления (Левая сторона) -->
-        <aside class="control-panel">
-            <div class="panel-header">
-                <div class="status-indicator"></div>
-                <h1>Моя Инженерная Фабрика</h1>
-                <p class="system-tag">КОНСОЛЬ // МОДУЛЬ АКТИВЕН</p>
-            </div>
-
-            <div class="terminal-sections">
-                <div class="tech-section section-zinc">
-                    <div class="section-tag">ZINC_ALLOY // О ПРОЕКТЕ</div>
-                    <p>Мы строим автоматические заводы на базе андезитовых сплавов...</p>
-                </div>
-
-                <div class="tech-section section-copper">
-                    <div class="section-tag">COPPER_LINE // НАШИ ЦЕЛИ</div>
-                    <p>Построить самую быструю линию сборки предметов.</p>
+            <!-- Левая колонка: Визуальный контент -->
+            <div class="about-visual">
+                <div class="image-wrapper">
+                    <!-- Замените URL на вашу картинку -->
+                    <img src="https://unsplash.com" alt="Creative Project">
+                    <div class="decor-badge" id="counter-badge">0+ Идей</div>
                 </div>
             </div>
 
-            <footer class="terminal-footer">
-                © 2026 СБОРКА ИНЖЕНЕРАМИ ПРОЕКТА. ВСЕ ПРАВА ЗАЩИЩЕНЫ МЕХАНИЗМОМ.
-            </footer>
-        </aside>
+            <!-- Правая колонка: Текстовый контент -->
+            <div class="about-content">
+                <span class="subtitle">О проекте</span>
+                <h2 class="title">Мы создаем <span class="highlight">будущее</span> цифрового пространства</h2>
 
-        <!-- Монитор показателей (Правая сторона) -->
-        <section class="telemetry-panel">
-            <div class="panel-tag">ТЕЛЕМЕТРИЯ В РЕАЛЬНОМ ВРЕМЕНИ</div>
+                <p class="description">
+                    Здесь вы можете разместить главное описание вашего проекта. Расскажите о вашей миссии, подходе к работе и том, какую проблему вы решаете. Этот текст должен вдохновлять и вовлекать пользователя с первых секунд.
+                </p>
 
-            <div class="dashboard-grid">
-                <!-- Большой виджет скорости вращения -->
-                <div class="widget widget-main">
-                    <div class="rpm-gauge">
-                        <svg viewBox="0 0 100 100">
-                            <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
-                            <circle class="gauge-fill" cx="50" cy="50" r="45"></circle>
-                        </svg>
-                        <div class="gauge-text">
-                            <span class="number count-up" data-target="128">0</span>
-                            <span class="unit">RPM</span>
-                        </div>
+                <!-- Интерактивные карточки преимуществ -->
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="icon">✨</div>
+                        <h3>Креативность</h3>
+                        <p>Короткое описание уникального свойства.</p>
                     </div>
-                    <span class="label">Скорость вращения вала</span>
-                </div>
-
-                <!-- Виджет автоматизации -->
-                <div class="widget">
-                    <div class="progress-bar-container">
-                        <div class="progress-bar-fill" style="width: 85%"></div>
+                    <div class="feature-card">
+                        <div class="icon">⚡</div>
+                        <h3>Скорость</h3>
+                        <p>Быстрая реализация любых ваших задумок.</p>
                     </div>
-                    <span class="number count-up" data-target="85" data-suffix="%">0%</span>
-                    <span class="label">Уровень автоматизации</span>
                 </div>
 
-                <!-- Виджет версии -->
-                <div class="widget">
-                    <div class="version-badge">SYS_CORE</div>
-                    <span class="number">v2.4</span>
-                    <span class="label">Индекс сборки</span>
+                <!-- Кнопка действия -->
+                <div class="action-area">
+                    <button class="btn-create" id="actionBtn">Узнать больше</button>
                 </div>
             </div>
-        </section>
 
-    </main>
+        </div>
+    </section>
 
-    <!-- Подключение изолированного JS-файла через статику Django -->
-    <script src="{% static 'about/script.js' %}"></script>
+    <script src="script.js"></script>
 </body>
 </html>
