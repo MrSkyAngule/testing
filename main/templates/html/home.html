@@ -1,151 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="ru" class="h-100">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create-Техно Сервер | Инженерия в Minecraft</title>
-    <!-- Подключаем Bootstrap CSS -->
-    <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Мой кастомный сайт на Django</title>
+    <!-- Django сам подставит правильный путь к файлу style.css -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body class="bg-dark text-light d-flex flex-column h-100">
+<body>
 
-    <!-- Навигация -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-body-tertiary border-bottom border-secondary shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-warning" href="#">⚙️ CREATE-CRAFT</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Главная</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">О моде</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#how-to-join">Как зайти?</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Главный экран (Hero) -->
-    <header class="bg-black py-5 text-center border-bottom border-warning border-3">
-        <div class="container py-5">
-            <div class="badge bg-warning text-dark mb-3 px-3 py-2 fw-bold text-uppercase rounded-pill">Закрытый технический сервер</div>
-            <h1 class="display-3 fw-bold mb-3 text-warning">Покори Эру Механизмов!</h1>
-            <p class="lead fs-4 text-secondary mx-auto mb-5" style="max-width: 700px;">
-                Строишь огромные заводы? Мечтаешь о собственной сети железных дорог с поездами?
-                У нас нет лагов, а вход доступен только для адекватного комьюнити через Discord.
-            </p>
-
-            <!-- ГЛАВНЫЙ CALL TO ACTION (Кнопка Discord) -->
-            <div class="p-4 rounded-4 shadow-lg mx-auto bg-body-tertiary border border-secondary border-dashed" style="max-width: 500px;">
-                <h5 class="fw-bold text-white mb-3">🔒 Доступ ограничен через Whitelist</h5>
-                <!-- Замените href на вашу ссылку-приглашение -->
-                <a href="https://discord.gg" target="_blank" class="btn btn-warning btn-lg w-100 py-3 mb-2 shadow fw-bold text-uppercase fs-5">
-                    🤖 Войти через Discord
-                </a>
-                <small class="text-muted d-block mt-2">Подай заявку в текстовом канале за пару секунд!</small>
-            </div>
-        </div>
+    <header class="custom-header">
+        <h1>Добро пожаловать на сайт Django!</h1>
     </header>
 
-    <!-- О моде Create -->
-    <section class="container my-5 py-4" id="about">
-        <h2 class="text-center fw-bold mb-5 text-warning">Что тебя ждет на сервере?</h2>
-        <div class="row g-4">
-            <!-- Карточка 1 -->
-            <div class="col-md-4">
-                <div class="card bg-body-tertiary border-secondary h-100 text-white shadow-sm">
-                    <div class="card-body p-4 text-center">
-                        <div class="display-4 mb-3">🚂</div>
-                        <h5 class="card-title fw-bold text-warning">Кастомные поезда</h5>
-                        <p class="card-text text-muted">Собирай составы из любых блоков, прокладывай рельсы между базами игроков и запускай расписание!</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Карточка 2 -->
-            <div class="col-md-4">
-                <div class="card bg-body-tertiary border-secondary h-100 text-white shadow-sm">
-                    <div class="card-body p-4 text-center">
-                        <div class="display-4 mb-3">🏭</div>
-                        <h5 class="card-title fw-bold text-warning">Авто-фабрики</h5>
-                        <p class="card-text text-muted">Забудь про нудное копание. Настрой конвейеры, дробилки и механические руки для полной автоматизации ресурсов.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Карточка 3 -->
-            <div class="col-md-4">
-                <div class="card bg-body-tertiary border-secondary h-100 text-white shadow-sm">
-                    <div class="card-body p-4 text-center">
-                        <div class="display-4 mb-3">🛡️</div>
-                        <h5 class="card-title fw-bold text-warning">Чистый онлайн</h5>
-                        <p class="card-text text-muted">Благодаря проходке через Discord, на сервере играют только увлеченные инженеры. Никаких гриферов!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <main class="content">
+        <p>Этот текст и шапка выше берут оформление из статики Django.</p>
+        <button class="custom-button">Кастомная кнопка</button>
+    </main>
 
-    <!-- Пошаговая инструкция (Accordion) -->
-    <section class="container my-5 py-4" id="how-to-join">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <h3 class="text-center fw-bold mb-4 text-warning">Как начать играть? Всего 3 простых шага</h3>
-
-                <div class="accordion accordion-flush rounded shadow border border-secondary" id="stepsAccordion">
-
-                    <!-- Шаг 1 -->
-                    <div class="accordion-item bg-body-tertiary text-white">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button bg-body-tertiary text-warning fw-bold shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#stepOne">
-                                Шаг 1: Вступить в наш Discord
-                            </button>
-                        </h2>
-                        <div id="stepOne" class="accordion-collapse collapse show" data-bs-parent="#stepsAccordion">
-                            <div class="accordion-body text-secondary border-top border-secondary">
-                                Нажми на желтую кнопку вверху страницы и присоединяйся к нашему Discord-серверу. Это главный хаб нашего проекта.
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Шаг 2 -->
-                    <div class="accordion-item bg-body-tertiary text-white">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button bg-body-tertiary text-warning fw-bold collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#stepTwo">
-                                Шаг 2: Подать заявку на Whitelist
-                            </button>
-                        </h2>
-                        <div id="stepTwo" class="accordion-collapse collapse" data-bs-parent="#stepsAccordion">
-                            <div class="accordion-body text-secondary border-top border-secondary">
-                                Перейди в канал <span class="badge bg-warning text-dark">#заявки</span>, напиши свой игровой никнейм и коротко расскажи о себе. Модераторы добавят тебя в белый список!
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Шаг 3 -->
-                    <div class="accordion-item bg-body-tertiary text-white">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button bg-body-tertiary text-warning fw-bold collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#stepThree">
-                                Шаг 3: Установить сборку модов
-                            </button>
-                        </h2>
-                        <div id="stepThree" class="accordion-collapse collapse" data-bs-parent="#stepsAccordion">
-                            <div class="accordion-body text-secondary border-top border-secondary">
-                                Скачай наш кастомный модпак по ссылке из закрепа в Discord (там нужен сам мод <b>Create</b> и аддоны). Запускай игру, бери IP в чате Дискорда и заходи!
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Подвал -->
-    <footer class="text-center py-4 bg-body-tertiary text-muted border-top border-secondary mt-auto">
-        <p class="mb-0">⚙️ CREATE-CRAFT &copy; 2026. Сделано на чистом Bootstrap.</p>
-    </footer>
-
-    <!-- Подключаем Bootstrap JS -->
-    <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
