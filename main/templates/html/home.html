@@ -1,23 +1,69 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой кастомный сайт на Django</title>
-    <!-- Django сам подставит правильный путь к файлу style.css -->
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Create World — Приватный Minecraft Сервер</title>
+    <!-- Подключение внешнего файла стилей CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="custom-header">
-        <h1>Добро пожаловать на сайт Django!</h1>
+    <!-- Шапка -->
+    <header>
+        <h1>Create World</h1>
+        <p>Инженерия, механизмы и ламповое выживание для своих</p>
     </header>
 
-    <main class="content">
-        <p>Этот текст и шапка выше берут оформление из статики Django.</p>
-        <button class="custom-button">Кастомная кнопка</button>
-    </main>
+    <!-- Основной контент -->
+    <div class="container">
+
+        <!-- О сервере -->
+        <section>
+            <h2>О нашем проекте</h2>
+            <p>Добро пожаловать на приватный сервер, полностью построенный вокруг культовой модификации <strong>Create</strong>. У нас нет публичного доступа, гриферов и токсичных игроков. Мы собираем сообщество людей, влюбленных в автоматизацию, поезда и эстетику индустриальной эпохи в Minecraft.</p>
+        </section>
+
+        <!-- Почему Create? -->
+        <section>
+            <h2>Что тебя ждет?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Автоматизация</h3>
+                    <p>Никаких скучных сундуков. Строй полноценные заводы, конвейеры, ветряные мельницы и буровые установки.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Логистика и Поезда</h3>
+                    <p>Создавай огромные железнодорожные сети для перевозки ресурсов между базами игроков.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Приватность</h3>
+                    <p>Вход только по белому списку (Whitelist). Твои постройки и механизмы в полной безопасности.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Ванильная атмосфера</h3>
+                    <p>Мод органично дополняет игру, не ломая классическое выживание и экономику.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Как попасть -->
+        <section>
+            <h2>Как попасть на сервер?</h2>
+            <p>Мы тщательно отбираем игроков, чтобы сохранить дружелюбную и творческую атмосферу. Для получения доступа тебе нужно заполнить небольшую анкету в нашем Discord или через форму заявок.</p>
+
+            <div class="center">
+                <!-- Замени # на реальную ссылку на Discord или форму -->
+                <a href="#" class="cta-btn">Подать заявку на сервер</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <p>&copy; 2026 Create World Server. Все права защищены. Проект не связан с Mojang Studios.</p>
+    </footer>
 
 </body>
 </html>

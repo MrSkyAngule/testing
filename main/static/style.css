@@ -1,72 +1,111 @@
-/* 1. Сброс базовых отступов и настройка фона всего сайта */
+/* Базовые настройки и шрифты */
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f0f4f8; /* Мягкий светло-серый фон */
-    color: #2c3e50;            /* Темно-синий цвет текста для лучшей читаемости */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-}
-
-/* 2. Кастомная шапка сайта (Хедер) */
-.custom-header {
-    background-color: #1a252f; /* Глубокий темный цвет */
-    color: #ffffff;            /* Белый текст */
-    width: 100%;
-    padding: 30px 0;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень снизу */
-    margin-bottom: 40px;
-}
-
-.custom-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: 600;
-}
-
-/* 3. Контейнер для основного контента */
-.content {
-    background-color: #ffffff; /* Белый блок для контента */
-    padding: 40px;
-    border-radius: 12px;       /* Скругленные углы */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Красивая объемная тень */
-    text-align: center;
-    max-width: 500px;
-    width: 90%;
-}
-
-.content p {
-    font-size: 1.1rem;
     line-height: 1.6;
-    margin-bottom: 25px;
 }
 
-/* 4. Кастомная стильная кнопка */
-.custom-button {
-    background-color: #3498db; /* Яркий синий цвет */
-    color: #ffffff;
-    border: none;
-    padding: 14px 28px;
-    font-size: 1rem;
-    font-weight: bold;
+/* Шапка сайта */
+header {
+    background: linear-gradient(135deg, #2e6f40, #1b4d26);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 4px solid #ff9f43;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #a3e2b2;
+}
+
+/* Главный контейнер */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Секции */
+section {
+    background-color: #262626;
+    padding: 30px;
+    margin-bottom: 30px;
     border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease; /* Плавный переход при наведении */
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    border-left: 5px solid #ff9f43;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-/* Эффект при наведении курсора на кнопку */
-.custom-button:hover {
-    background-color: #2980b9; /* Чуть темнее при наведении */
-    transform: translateY(-2px); /* Кнопка слегка приподнимается */
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+h2 {
+    color: #ff9f43;
+    margin-top: 0;
+    font-size: 1.8rem;
 }
 
-/* Эффект при клике на кнопку */
-.custom-button:active {
-    transform: translateY(1px); /* Кнопка утапливается */
+/* Особенности мода Create */
+.features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.feature-card {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #444;
+}
+
+.feature-card h3 {
+    color: #4cd137;
+    margin-top: 0;
+}
+
+/* Кнопка подачи заявки */
+.cta-btn {
+    display: inline-block;
+    background-color: #ff9f43;
+    color: #1a1a1a;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.cta-btn:hover {
+    background-color: #f39c12;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.center {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9rem;
+    border-top: 1px solid #333;
+    margin-top: 60px;
 }
