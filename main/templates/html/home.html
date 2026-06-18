@@ -5,149 +5,168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CreateCraft — Индустриальный Minecraft Сервер</title>
-    <link rel="stylesheet" href="{%static 'style.css' %}">
-    <!-- Иконки FontAwesome (используйте любые из них для кастомизации) -->
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <!-- Иконки FontAwesome -->
     <link rel="stylesheet" href="https://cloudflare.com">
 </head>
 <body>
 
-    <!-- Эффект пара на заднем плане -->
+    <!-- Инженерная сетка и пар -->
+    <div class="blueprint-bg"></div>
     <div class="steam-overlay"></div>
+
+    <!-- Декоративные трубы по бокам -->
+    <div class="pipe-decor left-pipe"></div>
+    <div class="pipe-decor right-pipe"></div>
 
     <!-- Шапка сайта -->
     <header>
         <div class="logo">
-            <i class="fa-solid fa-gear spin"></i>
+            <div class="logo-gears">
+                <i class="fa-solid fa-gear gear-1 spin"></i>
+                <i class="fa-solid fa-gear gear-2 spin-reverse"></i>
+            </div>
             <span>Create<span>Craft</span></span>
         </div>
         <nav>
-            <a href="#about">О проекте</a>
-            <a href="#features">Что у нас есть</a>
-            <a href="#start">Как начать</a>
+            <a href="#about"><i class="fa-solid fa-compass"></i> Проект</a>
+            <a href="#features"><i class="fa-solid fa-industry"></i> Контент</a>
+            <a href="#start"><i class="fa-solid fa-screws-into-thing"></i> Старт</a>
         </nav>
     </header>
 
     <!-- Главный экран -->
     <section class="hero" id="about">
         <div class="hero-content">
+            <div class="badge"><i class="fa-solid fa-bolt"></i> КИНЕТИЧЕСКАЯ ЭНЕРГИЯ</div>
             <h1>Эра Автоматизации Ждет Тебя</h1>
             <p>Добро пожаловать на уникальный сервер с модом <strong>Create</strong>. Стройте заводы, запускайте поезда и создавайте безумные механизмы в компании друзей!</p>
 
             <div class="hero-buttons">
-                <!-- Кнопка "Как играть" со скроллом -->
-                <a href="#start" class="btn btn-primary">
+                <!-- Механическая кнопка -->
+                <a href="#start" class="btn btn-create">
+                    <span class="btn-click-effect"></span>
                     <i class="fa-solid fa-wrench"></i>
-                    <span>Как начать играть</span>
+                    <span>ЗАПУСТИТЬ ИГРУ</span>
                 </a>
-                <!-- Кнопка Дискорда -->
+                <!-- Дискорд кнопка -->
                 <a href="https://discord.gg" target="_blank" class="btn btn-discord">
-                    <i class="fa-brands fa-discord"></i> Join Discord
+                    <i class="fa-brands fa-discord"></i>
+                    <span>НАШ ДИСКОРД</span>
                 </a>
             </div>
         </div>
 
-        <!-- Декоративная огромная шестеренка -->
+        <!-- Большая латунная шестеренка на фоне -->
         <div class="hero-gear-decor">
             <i class="fa-solid fa-gear spin-slow"></i>
         </div>
     </section>
 
-    <!-- РАЗДЕЛ: ЧТО У НАС ЕСТЬ (Расширенный грид с запасом карточек) -->
+    <!-- РАЗДЕЛ: ЧТО У НАС ЕСТЬ -->
     <section id="features" class="features">
-        <h2>Что у нас есть на сервере?</h2>
+        <div class="section-title-wrapper">
+            <i class="fa-solid fa-gauge-high gauge-icon spin-slow"></i>
+            <h2>Что у нас есть на сервере?</h2>
+        </div>
         <p class="section-subtitle">Основные фишки, установленные модификации и уникальный контент</p>
 
         <div class="grid">
-            <!-- Карточка 1 -->
             <div class="card">
+                <div class="card-rivet tl"></div><div class="card-rivet tr"></div>
                 <i class="fa-solid fa-train"></i>
                 <h3>Живые Поезда</h3>
                 <p>Полноценная железная дорога. Перевозите ресурсы между базами и путешествуйте с комфортом.</p>
+                <div class="card-rivet bl"></div><div class="card-rivet br"></div>
             </div>
-            <!-- Карточка 2 -->
             <div class="card">
+                <div class="card-rivet tl"></div><div class="card-rivet tr"></div>
                 <i class="fa-solid fa-industry"></i>
                 <h3>Фабрики и Заводы</h3>
                 <p>Автоматизируйте всё: от добычи булыжника до создания сложнейших механизмов и ферм.</p>
+                <div class="card-rivet bl"></div><div class="card-rivet br"></div>
             </div>
-            <!-- Карточка 3 -->
             <div class="card">
+                <div class="card-rivet tl"></div><div class="card-rivet tr"></div>
                 <i class="fa-solid fa-users"></i>
                 <h3>Дружное Комьюнити</h3>
                 <p>Никакого токсичного привата. Совместные проекты, торговля и развитие без ограничений.</p>
+                <div class="card-rivet bl"></div><div class="card-rivet br"></div>
             </div>
-            <!-- Карточка 4 (Дополнительное поле) -->
             <div class="card">
+                <div class="card-rivet tl"></div><div class="card-rivet tr"></div>
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 <h3>Аддоны для Create</h3>
                 <p>Здесь вы можете написать про дополнительные аддоны (например: Steam 'n' Rails, Enchantment Industry и т.д.).</p>
+                <div class="card-rivet bl"></div><div class="card-rivet br"></div>
             </div>
-            <!-- Карточка 5 (Дополнительное поле) -->
             <div class="card">
+                <div class="card-rivet tl"></div><div class="card-rivet tr"></div>
                 <i class="fa-solid fa-coins"></i>
                 <h3>Экономика и Рынок</h3>
                 <p>Место для описания вашей экономической системы, магазинов игроков, валюты или торговых зон.</p>
+                <div class="card-rivet bl"></div><div class="card-rivet br"></div>
             </div>
-            <!-- Карточка 6 (Дополнительное поле) -->
             <div class="card">
+                <div class="card-rivet tl"></div><div class="card-rivet tr"></div>
                 <i class="fa-solid fa-map-location-dot"></i>
                 <h3>Уникальный Мир</h3>
                 <p>Опишите генерацию мира (Terralith, Biomes o' Plenty), размеры карты или правила исследования ресурсных миров.</p>
+                <div class="card-rivet bl"></div><div class="card-rivet br"></div>
             </div>
-            <!-- Карточка 7 (Дополнительное поле) -->
             <div class="card">
+                <div class="card-rivet tl"></div><div class="card-rivet tr"></div>
                 <i class="fa-solid fa-shield-halved"></i>
                 <h3>Защита и Безопасность</h3>
                 <p>Расскажите игрокам про систему защиты от гриферства (логи блоков, систему приватных зон или доверия).</p>
+                <div class="card-rivet bl"></div><div class="card-rivet br"></div>
             </div>
-            <!-- Карточка 8 (Дополнительное поле) -->
             <div class="card">
+                <div class="card-rivet tl"></div><div class="card-rivet tr"></div>
                 <i class="fa-solid fa-calendar-days"></i>
                 <h3>Ивенты и Активности</h3>
                 <p>Напишите о регулярных серверных событиях, конкурсах на лучшие заводы или совместных стройках.</p>
+                <div class="card-rivet bl"></div><div class="card-rivet br"></div>
             </div>
         </div>
     </section>
 
-    <!-- РАЗДЕЛ: КАК НАЧАТЬ ИГРАТЬ (Увеличенное количество шагов) -->
+    <!-- РАЗДЕЛ: КАК НАЧАТЬ ИГРАТЬ -->
     <section id="start" class="start-guide">
-        <h2>Как начать играть?</h2>
-        <p class="section-subtitle">Простые шаги, которые отделяют тебя от старта индустриальной эпохи</p>
+        <div class="section-title-wrapper">
+            <i class="fa-solid fa-compass-drafting gauge-icon"></i>
+            <h2>Как начать играть?</h2>
+        </div>
+        <p class="section-subtitle">Простые шаги, которые отделят тебя от старта индустриальной эпохи</p>
 
         <div class="steps">
-            <!-- Шаг 1 -->
             <div class="step">
-                <div class="step-num">1</div>
+                <div class="step-num">01</div>
                 <h3>Версия игры</h3>
                 <p>Скачайте чистый Minecraft <strong>1.20.1</strong> (или укажите свою версию в этом блоке).</p>
             </div>
-            <!-- Шаг 2 -->
             <div class="step">
-                <div class="step-num">2</div>
+                <div class="step-num">02</div>
                 <h3>Загрузка модов</h3>
                 <p>Установите загрузчик <strong>Forge / Fabric</strong> и сам мод <strong>Create</strong>. Также скачайте необходимые аддоны.</p>
             </div>
-            <!-- Шаг 3 -->
             <div class="step">
-                <div class="step-num">3</div>
+                <div class="step-num">03</div>
                 <h3>Наш Discord</h3>
                 <p>Зайдите в наш Discord-сервер. Там находится точный список модов, готовая сборка в один клик и важные объявления.</p>
             </div>
-            <!-- Шаг 4 (Дополнительное поле) -->
             <div class="step">
-                <div class="step-num">4</div>
-                <h3>Подача заявки / Проходка</h3>
+                <div class="step-num">04</div>
+                <h3>Подача заявки</h3>
                 <p>Если у вас сервер по заявкам или white-лист, напишите тут, как в него попасть (например: "Заполните анкету в канале #заявки").</p>
             </div>
-            <!-- Шаг 5 (Дополнительное поле) -->
             <div class="step">
-                <div class="step-num">5</div>
-                <h3>Установка текстур / VoiceChat</h3>
+                <div class="step-num">05</div>
+                <h3>Голосовой чат</h3>
                 <p>Напишите сюда рекомендации по установке плагинов на звук (Simple Voice Chat) или рекомендованных шейдеров/ресурспаков.</p>
             </div>
-            <!-- Шаг 6 (Дополнительное поле) -->
             <div class="step">
-                <div class="step-num">6</div>
+                <div class="step-num">06</div>
                 <h3>В добрый путь!</h3>
                 <p>Запускайте игру, подключайтесь по адресу из Дискорда, читайте правила на спавне и приступайте к автоматизации!</p>
             </div>
@@ -156,7 +175,8 @@
 
     <!-- Подвал -->
     <footer>
-        <p>&copy; 2026 CreateCraft. Все права защищены. Разработано в стиле шестеренок.</p>
+        <div class="footer-gear"><i class="fa-solid fa-gear spin"></i></div>
+        <p>&copy; 2026 CreateCraft. Индустриальный мир механизмов. Все права защищены.</p>
     </footer>
 
 </body>
