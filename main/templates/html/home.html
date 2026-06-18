@@ -1,88 +1,162 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CreateCraft — Индустриальный Minecraft Сервер</title>
-    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <link rel="stylesheet" href="style.css">
+    <!-- Иконки FontAwesome (используйте любые из них для кастомизации) -->
     <link rel="stylesheet" href="https://cloudflare.com">
 </head>
 <body>
+
+    <!-- Эффект пара на заднем плане -->
     <div class="steam-overlay"></div>
+
+    <!-- Шапка сайта -->
     <header>
         <div class="logo">
             <i class="fa-solid fa-gear spin"></i>
             <span>Create<span>Craft</span></span>
         </div>
         <nav>
-            <a href="#about">О сервере</a>
-            <a href="#features">Механизмы</a>
+            <a href="#about">О проекте</a>
+            <a href="#features">Что у нас есть</a>
             <a href="#start">Как начать</a>
         </nav>
     </header>
-    <section class="hero">
+
+    <!-- Главный экран -->
+    <section class="hero" id="about">
         <div class="hero-content">
             <h1>Эра Автоматизации Ждет Тебя</h1>
             <p>Добро пожаловать на уникальный сервер с модом <strong>Create</strong>. Стройте заводы, запускайте поезда и создавайте безумные механизмы в компании друзей!</p>
+
             <div class="hero-buttons">
-                <button class="btn btn-primary" id="copy-ip-btn">
-                    <i class="fa-solid fa-server"></i>
-                    <span id="ip-text">IP: play.createcraft.ru</span>
-                </button>
+                <!-- Кнопка "Как играть" со скроллом -->
+                <a href="#start" class="btn btn-primary">
+                    <i class="fa-solid fa-wrench"></i>
+                    <span>Как начать играть</span>
+                </a>
+                <!-- Кнопка Дискорда -->
                 <a href="https://discord.gg" target="_blank" class="btn btn-discord">
                     <i class="fa-brands fa-discord"></i> Join Discord
                 </a>
             </div>
-            <div class="online-counter">
-                <span class="status-dot"></span>
-                <span>Онлайн: <strong id="player-count">42</strong> игроков</span>
-            </div>
         </div>
+
+        <!-- Декоративная огромная шестеренка -->
         <div class="hero-gear-decor">
             <i class="fa-solid fa-gear spin-slow"></i>
         </div>
     </section>
+
+    <!-- РАЗДЕЛ: ЧТО У НАС ЕСТЬ (Расширенный грид с запасом карточек) -->
     <section id="features" class="features">
-        <h2>Наши Особенности</h2>
+        <h2>Что у нас есть на сервере?</h2>
+        <p class="section-subtitle">Основные фишки, установленные модификации и уникальный контент</p>
+
         <div class="grid">
+            <!-- Карточка 1 -->
             <div class="card">
                 <i class="fa-solid fa-train"></i>
                 <h3>Живые Поезда</h3>
                 <p>Полноценная железная дорога. Перевозите ресурсы между базами и путешествуйте с комфортом.</p>
             </div>
+            <!-- Карточка 2 -->
             <div class="card">
                 <i class="fa-solid fa-industry"></i>
                 <h3>Фабрики и Заводы</h3>
                 <p>Автоматизируйте всё: от добычи булыжника до создания сложнейших механизмов и ферм.</p>
             </div>
+            <!-- Карточка 3 -->
             <div class="card">
                 <i class="fa-solid fa-users"></i>
                 <h3>Дружное Комьюнити</h3>
                 <p>Никакого токсичного привата. Совместные проекты, торговля и развитие без ограничений.</p>
             </div>
+            <!-- Карточка 4 (Дополнительное поле) -->
+            <div class="card">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h3>Аддоны для Create</h3>
+                <p>Здесь вы можете написать про дополнительные аддоны (например: Steam 'n' Rails, Enchantment Industry и т.д.).</p>
+            </div>
+            <!-- Карточка 5 (Дополнительное поле) -->
+            <div class="card">
+                <i class="fa-solid fa-coins"></i>
+                <h3>Экономика и Рынок</h3>
+                <p>Место для описания вашей экономической системы, магазинов игроков, валюты или торговых зон.</p>
+            </div>
+            <!-- Карточка 6 (Дополнительное поле) -->
+            <div class="card">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <h3>Уникальный Мир</h3>
+                <p>Опишите генерацию мира (Terralith, Biomes o' Plenty), размеры карты или правила исследования ресурсных миров.</p>
+            </div>
+            <!-- Карточка 7 (Дополнительное поле) -->
+            <div class="card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Защита и Безопасность</h3>
+                <p>Расскажите игрокам про систему защиты от гриферства (логи блоков, систему приватных зон или доверия).</p>
+            </div>
+            <!-- Карточка 8 (Дополнительное поле) -->
+            <div class="card">
+                <i class="fa-solid fa-calendar-days"></i>
+                <h3>Ивенты и Активности</h3>
+                <p>Напишите о регулярных серверных событиях, конкурсах на лучшие заводы или совместных стройках.</p>
+            </div>
         </div>
     </section>
+
+    <!-- РАЗДЕЛ: КАК НАЧАТЬ ИГРАТЬ (Увеличенное количество шагов) -->
     <section id="start" class="start-guide">
         <h2>Как начать играть?</h2>
+        <p class="section-subtitle">Простые шаги, которые отделяют тебя от старта индустриальной эпохи</p>
+
         <div class="steps">
+            <!-- Шаг 1 -->
             <div class="step">
                 <div class="step-num">1</div>
-                <p>Скачайте чистый Minecraft <strong>1.20.1</strong> (или версию вашего сервера).</p>
+                <h3>Версия игры</h3>
+                <p>Скачайте чистый Minecraft <strong>1.20.1</strong> (или укажите свою версию в этом блоке).</p>
             </div>
+            <!-- Шаг 2 -->
             <div class="step">
                 <div class="step-num">2</div>
-                <p>Установите <strong>Forge / Fabric</strong> и последнюю версию мода <strong>Create</strong>.</p>
+                <h3>Загрузка модов</h3>
+                <p>Установите загрузчик <strong>Forge / Fabric</strong> и сам мод <strong>Create</strong>. Также скачайте необходимые аддоны.</p>
             </div>
+            <!-- Шаг 3 -->
             <div class="step">
                 <div class="step-num">3</div>
-                <p>Скопируйте наш IP, заходите и начинайте свое индустриальное приключение!</p>
+                <h3>Наш Discord</h3>
+                <p>Зайдите в наш Discord-сервер. Там находится точный список модов, готовая сборка в один клик и важные объявления.</p>
+            </div>
+            <!-- Шаг 4 (Дополнительное поле) -->
+            <div class="step">
+                <div class="step-num">4</div>
+                <h3>Подача заявки / Проходка</h3>
+                <p>Если у вас сервер по заявкам или white-лист, напишите тут, как в него попасть (например: "Заполните анкету в канале #заявки").</p>
+            </div>
+            <!-- Шаг 5 (Дополнительное поле) -->
+            <div class="step">
+                <div class="step-num">5</div>
+                <h3>Установка текстур / VoiceChat</h3>
+                <p>Напишите сюда рекомендации по установке плагинов на звук (Simple Voice Chat) или рекомендованных шейдеров/ресурспаков.</p>
+            </div>
+            <!-- Шаг 6 (Дополнительное поле) -->
+            <div class="step">
+                <div class="step-num">6</div>
+                <h3>В добрый путь!</h3>
+                <p>Запускайте игру, подключайтесь по адресу из Дискорда, читайте правила на спавне и приступайте к автоматизации!</p>
             </div>
         </div>
     </section>
+
+    <!-- Подвал -->
     <footer>
         <p>&copy; 2026 CreateCraft. Все права защищены. Разработано в стиле шестеренок.</p>
     </footer>
-    <script src="script.js"></script>
+
 </body>
 </html>
