@@ -1,292 +1,310 @@
-/* Стиль Create: Латунь, Медь, Чертежи, Шестеренки */
-@import url('https://googleapis.com');
+/* Общие стили и переменные (стилистика мода Create: медь, латунь, сланец) */
+:root {
+    --bg-dark: #1e1e24;
+    --bg-card: #2a2a32;
+    --copper: #d97736;
+    --brass: #e6b347;
+    --zinc: #8a9597;
+    --text-light: #f5f5f5;
+    --discord-color: #5865F2;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: #2e2620;
-    background-image:
-        radial-gradient(#3e352f 1.5px, transparent 1.5px),
-        linear-gradient(to right, #29221d 1px, transparent 1px),
-        linear-gradient(to bottom, #29221d 1px, transparent 1px);
-    background-size: 24px 24px, 120px 120px, 120px 120px;
-    color: #ebdccb;
-    font-family: 'Courier Prime', monospace;
-    line-height: 1.7;
-    padding-bottom: 60px;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Инженерная Шапка */
-header {
-    background-color: #1a1512;
-    border-bottom: 6px dashed #cd7f32;
-    padding: 80px 0;
-    text-align: center;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* Медный трубопровод */
-header::after {
-    content: '';
-    position: absolute;
-    bottom: -11px;
+/* Эффект легкого дыма/пара на фоне */
+.steam-overlay {
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 5px;
-    background: linear-gradient(to bottom, #d27d2d, #b05f18, #6e360a);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(217, 119, 54, 0.05), transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Анимации вращения шестеренок */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spin {
+    animation: spin 4s linear infinite;
+}
+
+.spin-slow {
+    animation: spin 25s linear infinite;
+}
+
+/* Шапка сайта */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(30, 30, 36, 0.95);
+    border-bottom: 3px solid var(--copper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    color: #f4a460;
-    font-weight: 700;
-    font-style: italic;
-    text-shadow: 4px 4px 0px #7c3f12, 7px 7px 0px rgba(0,0,0,0.4);
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-}
-
-.tagline {
-    font-size: 1.2rem;
-    color: #bfaea0;
-    max-width: 750px;
-    margin: 0 auto 40px auto;
-    border-left: 4px solid #cd7f32;
-    border-right: 4px solid #cd7f32;
-    padding: 5px 20px;
-    background-color: #211a16;
-}
-
-/* Панель Управления IP */
-.control-panel {
-    display: inline-block;
-    background-color: #3a312a;
-    border: 4px solid #b87333;
-    border-radius: 4px;
-    padding: 20px 40px;
-    cursor: pointer;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.7), 0 6px 0px #15110f, 0 10px 20px rgba(0,0,0,0.4);
-    transition: all 0.1s ease;
-}
-
-.control-panel:active {
-    transform: translateY(5px);
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.7), 0 1px 0px #15110f;
-}
-
-.panel-label {
-    font-size: 0.8rem;
-    color: #cd7f32;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
     font-weight: bold;
+    color: var(--brass);
 }
 
-.server-ip {
-    font-size: 1.8rem;
-    color: #fff0e0;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    text-shadow: 0 0 10px rgba(255,240,224,0.2);
+.logo i {
+    color: var(--copper);
 }
 
-/* Основной технический блок */
-.blueprint-section {
-    padding: 80px 0;
+.logo span span {
+    color: var(--text-light);
 }
 
-.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: #f4a460;
-    text-align: center;
-    margin-bottom: 60px;
-    font-style: italic;
-    position: relative;
-}
-
-.section-title::after {
-    content: '⚙️ ⚙️ ⚙️';
-    display: block;
-    font-size: 1.2rem;
-    color: #7c4a24;
-    margin-top: 10px;
-}
-
-/* Сетка чертежей */
-.blueprint-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
-    margin-bottom: 60px;
-}
-
-.blueprint-card {
-    background-color: #241d19;
-    border: 2px solid #524339;
-    padding: 40px;
-    position: relative;
-    border-radius: 4px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-}
-
-/* Индикатор-шестеренка в углу */
-.blueprint-card::before {
-    content: '⚙️';
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 1.1rem;
-    color: #cd7f32;
-    opacity: 0.5;
-}
-
-.blueprint-card h3 {
-    font-family: 'Playfair Display', serif;
-    color: #cd7f32;
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-    border-bottom: 2px dashed #524339;
-    padding-bottom: 12px;
-    font-style: italic;
-}
-
-.blueprint-card p {
-    font-size: 0.95rem;
-    color: #d7c5b4;
-    text-align: justify;
-    margin-bottom: 15px;
-}
-
-.blueprint-card ul {
-    list-style-type: none;
-    margin-top: 15px;
-}
-
-.blueprint-card li {
-    font-size: 0.9rem;
-    color: #bfaea0;
-    margin-bottom: 8px;
-    padding-left: 20px;
-    position: relative;
-}
-
-.blueprint-card li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: #cd7f32;
-}
-
-/* Развернутый информационный блок */
-.manifesto-block {
-    background-color: #1f1916;
-    border: 3px double #cd7f32;
-    padding: 50px;
-    margin-bottom: 80px;
-    border-radius: 4px;
-}
-
-.manifesto-block h3 {
-    font-family: 'Playfair Display', serif;
-    color: #f4a460;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    text-align: center;
-    font-style: italic;
-}
-
-.manifesto-block p {
-    font-size: 1rem;
-    color: #d7c5b4;
-    margin-bottom: 20px;
-    text-indent: 30px;
-    text-align: justify;
-}
-
-/* Блок Дискорда */
-.community-hub {
-    text-align: center;
-    background-color: #1a1512;
-    border: 4px dashed #524339;
-    padding: 60px 40px;
-    border-radius: 4px;
-    position: relative;
-}
-
-.community-hub h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    color: #f4a460;
-    margin-bottom: 15px;
-    font-style: italic;
-}
-
-.community-hub p {
-    color: #bfaea0;
-    max-width: 650px;
-    margin: 0 auto 35px auto;
-    font-size: 1rem;
-}
-
-/* Кнопка Discord в стиле Create */
-.discord-btn {
-    display: inline-block;
-    background-color: #5865F2;
-    color: #ffffff;
-    font-family: 'Courier Prime', monospace;
-    font-size: 1.2rem;
-    font-weight: bold;
+nav a {
+    color: var(--text-light);
     text-decoration: none;
-    padding: 18px 45px;
-    border: 3px solid #404eed;
-    border-radius: 4px;
-    box-shadow: 0 5px 0px #2f3570, 0 10px 20px rgba(0,0,0,0.4);
-    transition: all 0.1s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
-.discord-btn:hover {
-    background-color: #4752c4;
-    transform: translateY(-2px);
-    box-shadow: 0 7px 0px #2f3570, 0 12px 24px rgba(0,0,0,0.5);
+nav a:hover {
+    color: var(--brass);
 }
 
-.discord-btn:active {
-    transform: translateY(5px);
-    box-shadow: 0 0px 0px #2f3570, inset 0 4px 10px rgba(0,0,0,0.4);
+/* Главный экран */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 650px;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--text-light);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    color: #ccc;
+}
+
+.hero p strong {
+    color: var(--brass);
+}
+
+/* Кнопки */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--copper);
+    color: white;
+    border-bottom: 4px solid #a05221;
+}
+
+.btn-primary:hover {
+    background-color: #eb8543;
+    box-shadow: 0 0 15px rgba(217, 119, 54, 0.4);
+}
+
+.btn-discord {
+    background-color: var(--discord-color);
+    color: white;
+    border-bottom: 4px solid #3b45c2;
+}
+
+.btn-discord:hover {
+    background-color: #6a76f5;
+    box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
+}
+
+/* Онлайн */
+.online-counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    background: rgba(0,0,0,0.2);
+    padding: 8px 15px;
+    border-radius: 20px;
+    width: max-content;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #2ecc71;
+}
+
+/* Фоновая декоративная шестеренка */
+.hero-gear-decor {
+    position: absolute;
+    right: -100px;
+    bottom: -50px;
+    font-size: 500px;
+    color: rgba(230, 179, 71, 0.03);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Карточки особенностей */
+.features {
+    padding: 80px 8%;
+    background-color: var(--bg-card);
+    border-top: 3px solid var(--zinc);
+    border-bottom: 3px solid var(--zinc);
+}
+
+.features h2, .start-guide h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: var(--brass);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--bg-dark);
+    padding: 40px 30px;
+    border-radius: 8px;
+    border: 2px solid #3e3e4a;
+    transition: transform 0.3s, border-color 0.3s;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--copper);
+}
+
+.card i {
+    font-size: 40px;
+    color: var(--copper);
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #aaa;
+    line-height: 1.5;
+}
+
+/* Как начать играть */
+.start-guide {
+    padding: 80px 8%;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.step {
+    flex: 1;
+    min-width: 250px;
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 8px;
+    position: relative;
+    border-left: 4px solid var(--brass);
+}
+
+.step-num {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--brass);
+    margin-bottom: 15px;
+}
+
+.step p {
+    color: #ddd;
+    line-height: 1.6;
 }
 
 /* Подвал */
 footer {
-    background-color: #14100e;
-    padding: 40px 0;
     text-align: center;
-    border-top: 4px solid #3a312a;
-    color: #6e5e53;
-    font-size: 0.85rem;
-    margin-top: 80px;
+    padding: 40px;
+    background: #141418;
+    color: #666;
+    border-top: 1px solid #222;
 }
 
-/* Адаптивность */
+/* Адаптивность для мобильных */
 @media (max-width: 768px) {
-    .logo { font-size: 2.8rem; }
-    .server-ip { font-size: 1.3rem; }
-    .manifesto-block { padding: 25px; }
-    .discord-btn { padding: 15px 30px; font-size: 1rem; }
+    header { padding: 15px 5%; }
+    .hero { padding: 40px 5%; text-align: center; }
+    .hero-content { margin: 0 auto; }
+    .hero h1 { font-size: 34px; }
+    .hero-buttons { justify-content: center; }
+    .online-counter { margin: 0 auto; }
+    .steps { flex-direction: column; }
 }

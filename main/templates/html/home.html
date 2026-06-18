@@ -4,103 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Create Craft — Инженерный Minecraft Сервер</title>
-    <!-- Подключаем внешний файл стилей style.css -->
+    <title>CreateCraft — Индустриальный Minecraft Сервер</title>
     <link rel="stylesheet" href="{% static 'style.css'%}">
+    <link rel="stylesheet" href="https://cloudflare.com">
 </head>
 <body>
-
-    <!-- Шапка Инженерного Корпуса -->
+    <div class="steam-overlay"></div>
     <header>
-        <div class="container">
-            <div class="logo">The Create Craft</div>
-            <div class="tagline">Индустриальная эволюция Minecraft: кинетическая энергия, масштабные логистические цепи и сложнейшая автоматизация</div>
-
-            <div class="control-panel" onclick="copyServerIP()">
-                <div class="panel-label">[ Клик для синхронизации шлюза ]</div>
-                <div class="server-ip" id="server-address">mc.createcraft.ru</div>
+        <div class="logo">
+            <i class="fa-solid fa-gear spin"></i>
+            <span>Create<span>Craft</span></span>
+        </div>
+        <nav>
+            <a href="#about">О сервере</a>
+            <a href="#features">Механизмы</a>
+            <a href="#start">Как начать</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Эра Автоматизации Ждет Тебя</h1>
+            <p>Добро пожаловать на уникальный сервер с модом <strong>Create</strong>. Стройте заводы, запускайте поезда и создавайте безумные механизмы в компании друзей!</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="copy-ip-btn">
+                    <i class="fa-solid fa-server"></i>
+                    <span id="ip-text">IP: play.createcraft.ru</span>
+                </button>
+                <a href="https://discord.gg" target="_blank" class="btn btn-discord">
+                    <i class="fa-brands fa-discord"></i> Join Discord
+                </a>
+            </div>
+            <div class="online-counter">
+                <span class="status-dot"></span>
+                <span>Онлайн: <strong id="player-count">42</strong> игроков</span>
             </div>
         </div>
-    </header>
-
-    <!-- Главный Технический Раздел -->
-    <section class="blueprint-section">
-        <div class="container">
-            <div class="section-title">Инженерные Спецификации Сервера</div>
-
-            <div class="blueprint-grid">
-                <!-- Модуль 1 -->
-                <div class="blueprint-card">
-                    <h3>Модуль I: Кинетика</h3>
-                    <p>Превратите тепло, пар и силу ветра в полезную механическую работу. На нашем сервере вам предстоит отказаться от статических механизмов в пользу динамических систем вращения.</p>
-                    <p>Проектируйте массивные многоступенчатые редукторы, передавайте энергию через километровые валы и ременные передачи. Распределяйте крутящий момент между сотнями дробителей, прессов и смесителей.</p>
-                    <ul>
-                        <li>Ветряные и водяные двигатели</li>
-                        <li>Многоуровневые паровые котлы</li>
-                        <li>Системы маховиков и сцеплений</li>
-                    </ul>
-                </div>
-
-                <!-- Модуль 2 -->
-                <div class="blueprint-card">
-                    <h3>Модуль II: Магистрали</h3>
-                    <p>Забудьте про стандартные вагонетки. Наша транспортная доктрина базируется на полноценных, собираемых из любых блоков поездах, способных перемещаться между чанками.</p>
-                    <p>Прокладывайте масштабные железнодорожные пути, возводите мосты, проектируйте автоматические семафоры и стрелки. Программируйте расписание составов, чтобы они самостоятельно снабжали заводы рудой.</p>
-                    <ul>
-                        <li>Кастомная сборка локомотивов</li>
-                        <li>Автоматические станции разгрузки</li>
-                        <li>Глобальная путевая навигация</li>
-                    </ul>
-                </div>
-
-                <!-- Модуль 3 -->
-                <div class="blueprint-card">
-                    <h3>Модуль III: Фабрикация</h3>
-                    <p>Переведите производство на конвейерные рельсы. Механические руки, сортировщики, воронки и конвейерные ленты позволят вам полностью автоматизировать создание любых предметов.</p>
-                    <p>Создавайте заводы полного цикла: от автоматической добычи булыжника и его промывки до сборки сложнейших прецизионных механизмов без ручного вмешательства.</p>
-                    <ul>
-                        <li>Многоленточные сортировочные цеха</li>
-                        <li>Линии автоматической фильтрации</li>
-                        <li>Производство жидких компонентов</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Развернутый манифест -->
-            <div class="manifesto-block">
-                <h3>Индустриальный Манифест</h3>
-                <p>Наш сервер — это не просто место для выживания, это огромная песочница для инженеров, где во главе угла стоит эстетика работающих механизмов. Мы ушли от концепции «магических блоков», которые делают всё внутри одного пикселя. Каждый процесс здесь нагляден: вы видите, как крутятся шестерни, как движутся поршни, как плавится металл под струями лавы и как готовая продукция падает на конвейер.</p>
-                <p>Мир сервера спроектирован так, чтобы поощрять кооперацию. Одиночке будет трудно развернуть добычу ресурсов промышленного масштаба, но объединившись в конструкторские бюро, игроки способны возводить целые индустриальные города. Стройте общие магистрали, делитесь излишками энергии от мощных паровых турбин и создавайте торговые корпорации.</p>
-            </div>
-
-            <!-- Блок Discord -->
-            <div class="community-hub">
-                <h2>Конструкторское Бюро в Discord</h2>
-                <p>Нужны чертежи схем? Ищете партнеров для строительства трансконтинентальной железной дороги или хотите продемонстрировать свой новый автоматический завод? Присоединяйтесь к нашему инженерному штабу!</p>
-                <a href="https://discord.gg" target="_blank" class="discord-btn">Присоединиться к сообществу</a>
-            </div>
-
+        <div class="hero-gear-decor">
+            <i class="fa-solid fa-gear spin-slow"></i>
         </div>
     </section>
-
-    <!-- Технический Подвал -->
-    <footer>
-        <div class="container">
-            <p>АРХИВЫ СЕРВЕРА // СБОРКА 2026 // COG & WHEEL ENGINEERING DIVISION // NOT AN OFFICIAL MINECRAFT PRODUCT</p>
+    <section id="features" class="features">
+        <h2>Наши Особенности</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fa-solid fa-train"></i>
+                <h3>Живые Поезда</h3>
+                <p>Полноценная железная дорога. Перевозите ресурсы между базами и путешествуйте с комфортом.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-industry"></i>
+                <h3>Фабрики и Заводы</h3>
+                <p>Автоматизируйте всё: от добычи булыжника до создания сложнейших механизмов и ферм.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-users"></i>
+                <h3>Дружное Комьюнити</h3>
+                <p>Никакого токсичного привата. Совместные проекты, торговля и развитие без ограничений.</p>
+            </div>
         </div>
+    </section>
+    <section id="start" class="start-guide">
+        <h2>Как начать играть?</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <p>Скачайте чистый Minecraft <strong>1.20.1</strong> (или версию вашего сервера).</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <p>Установите <strong>Forge / Fabric</strong> и последнюю версию мода <strong>Create</strong>.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <p>Скопируйте наш IP, заходите и начинайте свое индустриальное приключение!</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2026 CreateCraft. Все права защищены. Разработано в стиле шестеренок.</p>
     </footer>
-
-    <!-- Логика фиксации координат -->
-    <script>
-        function copyServerIP() {
-            const addressText = document.getElementById('server-address').innerText;
-            navigator.clipboard.writeText(addressText).then(() => {
-                alert('Сетевой адрес скопирован в буфер обмена: ' + addressText);
-            }).catch(err => {
-                console.error('Ошибка терминала: ', err);
-            });
-        }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
