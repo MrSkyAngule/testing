@@ -4,120 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О проекте | Моя Инженерная Фабрика</title>
+    <title>Инженерный Модуль | Моя Инженерная Фабрика</title>
     <link rel="stylesheet" href="{% static 'about/style.css' %}">
 </head>
 <body>
-    <div class="project-card">
-        <!-- Скрытые элементы для создания глубокого свечения внутри карточки -->
-        <div class="card-glow-bg"></div>
+    <!-- Живой фон: Инженерная сетка чертежа -->
+    <div class="blueprint-grid"></div>
+    <div class="ambient-glow"></div>
 
-        <!-- Шапка карточки -->
-        <div class="header">
-            <h1>Моя Инженерная Фабрика</h1>
-            <div class="subtitle">Инженерный модуль / Статус: Активен</div>
-        </div>
+    <!-- Главный контейнер терминала -->
+    <main class="terminal-container">
 
-        <!-- Основной контент -->
-        <div class="content">
-            <div class="section-blue">
-                <h2>О проекте</h2>
-                <p>Мы строим автоматические заводы на базе андезитовых сплавов...</p>
+        <!-- Панель управления (Левая сторона) -->
+        <aside class="control-panel">
+            <div class="panel-header">
+                <div class="status-indicator"></div>
+                <h1>Моя Инженерная Фабрика</h1>
+                <p class="system-tag">КОНСОЛЬ // МОДУЛЬ АКТИВЕН</p>
             </div>
 
-            <div class="section-orange">
-                <h2>Наши Цели</h2>
-                <p>Построить самую быструю линию сборки предметов.</p>
-            </div>
-
-            <!-- Сетка со статистикой -->
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <span class="number">v2.4</span>
-                    <span class="label">Версия сборки</span>
+            <div class="terminal-sections">
+                <div class="tech-section section-zinc">
+                    <div class="section-tag">ZINC_ALLOY // О ПРОЕКТЕ</div>
+                    <p>Мы строим автоматические заводы на базе андезитовых сплавов...</p>
                 </div>
-                <!-- Анимируемые через JS числовые блоки (целевое число в data-target) -->
-                <div class="stat-box">
+
+                <div class="tech-section section-copper">
+                    <div class="section-tag">COPPER_LINE // НАШИ ЦЕЛИ</div>
+                    <p>Построить самую быструю линию сборки предметов.</p>
+                </div>
+            </div>
+
+            <footer class="terminal-footer">
+                © 2026 СБОРКА ИНЖЕНЕРАМИ ПРОЕКТА. ВСЕ ПРАВА ЗАЩИЩЕНЫ МЕХАНИЗМОМ.
+            </footer>
+        </aside>
+
+        <!-- Монитор показателей (Правая сторона) -->
+        <section class="telemetry-panel">
+            <div class="panel-tag">ТЕЛЕМЕТРИЯ В РЕАЛЬНОМ ВРЕМЕНИ</div>
+
+            <div class="dashboard-grid">
+                <!-- Большой виджет скорости вращения -->
+                <div class="widget widget-main">
+                    <div class="rpm-gauge">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="gauge-bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="gauge-fill" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <div class="gauge-text">
+                            <span class="number count-up" data-target="128">0</span>
+                            <span class="unit">RPM</span>
+                        </div>
+                    </div>
+                    <span class="label">Скорость вращения вала</span>
+                </div>
+
+                <!-- Виджет автоматизации -->
+                <div class="widget">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 85%"></div>
+                    </div>
                     <span class="number count-up" data-target="85" data-suffix="%">0%</span>
-                    <span class="label">Автоматизация</span>
+                    <span class="label">Уровень автоматизации</span>
                 </div>
-                <div class="stat-box">
-                    <span class="number count-up" data-target="128" data-suffix=" RPM">0 RPM</span>
-                    <span class="label">Скорость вращения</span>
+
+                <!-- Виджет версии -->
+                <div class="widget">
+                    <div class="version-badge">SYS_CORE</div>
+                    <span class="number">v2.4</span>
+                    <span class="label">Индекс сборки</span>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Подвал -->
-        <div class="footer">
-            © 2026 Создано инженерами проекта. Все права защищены механизмом.
-        </div>
-    </div>
+    </main>
 
-    <!-- Интерактивные скрипты стиля Create -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const card = document.querySelector('.project-card');
-            const statsBoxes = document.querySelectorAll('.stat-box');
-            const counters = document.querySelectorAll('.count-up');
-
-            // 1. Эффект 3D наклона карточки за курсором
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-
-                // Мягкий угол наклона для премиального ощущения
-                const degX = -(y / (rect.height / 2)) * 5;
-                const degY = (x / (rect.width / 2)) * 5;
-
-                card.style.transform = `rotateX(${degX}deg) rotateY(${degY}deg) translateY(-5px)`;
-            });
-
-            // Возврат карточки в дефолтное положение
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0px)';
-            });
-
-            // 2. Световой трек мыши для рамок и фона виджетов статистики
-            statsBoxes.forEach(box => {
-                box.addEventListener('mousemove', (e) => {
-                    const rect = box.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    box.style.setProperty('--mouse-x', `${x}px`);
-                    box.style.setProperty('--mouse-y', `${y}px`);
-                });
-            });
-
-            // 3. Анимация плавного набора цифр (Count Up эффект)
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const suffix = counter.getAttribute('data-suffix') || '';
-                const duration = 1500; // Время анимации в миллисекундах
-                const startTime = performance.now();
-
-                const updateCount = (currentTime) => {
-                    const elapsedTime = currentTime - startTime;
-                    const progress = Math.min(elapsedTime / duration, 1);
-
-                    // Функция плавности (Ease Out Quad)
-                    const easeProgress = progress * (2 - progress);
-                    const currentValue = Math.floor(easeProgress * target);
-
-                    counter.innerText = currentValue + suffix;
-
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCount);
-                    } else {
-                        counter.innerText = target + suffix;
-                    }
-                };
-
-                requestAnimationFrame(updateCount);
-            });
-        });
-    </script>
+    <!-- Подключение изолированного JS-файла через статику Django -->
+    <script src="{% static 'about/script.js' %}"></script>
 </body>
 </html>
