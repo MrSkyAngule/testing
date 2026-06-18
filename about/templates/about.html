@@ -4,19 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О проекте | Create Grid</title>
-    <link rel="stylesheet" href="{%static 'about/style.css'%}">
+    <title>О проекте | Andesite Create Grid</title>
+    <link rel="stylesheet" href="{% static 'about/style.css'%}">
 </head>
 <body>
 
-    <!-- Интерактивное клетчатое поле -->
-    <div class="grid-background" id="gridBg"></div>
+    <!-- Клетчатое андезитовое поле -->
+    <div class="andesite-grid-bg" id="gridBg"></div>
 
-    <!-- Контент, прижатый к левой стороне -->
+    <!-- Интерактивный кристаллический свет за курсором -->
+    <div class="glow-pointer" id="glowPointer"></div>
+
+    <!-- Текст, прижатый к левой стороне -->
     <main class="about-sidebar">
         <div class="sidebar-content">
 
-            <span class="badge-create">Спецификация</span>
+            <span class="badge-create">Структура породы</span>
 
             <h1 class="project-title">Пространство <br>для <span class="gradient-text">созидания</span></h1>
 
@@ -28,7 +31,7 @@
                 <ul class="specs-list">
                     <li><span>Скорость:</span> Ванильный код, мгновенный рендеринг.</li>
                     <li><span>Интерфейс:</span> Минималистичная сетка, фокус на тексте.</li>
-                    <li><span>Сборка:</span> v4.0.0-grid • Чистые веб-стандарты.</li>
+                    <li><span>Сборка:</span> v5.0.0-andesite • Чистые стандарты.</li>
                 </ul>
             </div>
 

@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #050508; /* Глубокий темный */
+    background-color: #0b0c0e; /* Глубокий минеральный цвет темного андезита */
     color: #ffffff;
     min-height: 100vh;
     overflow-x: hidden;
@@ -14,32 +14,55 @@ body {
     align-items: center;
 }
 
-/* Клетчатое поле на CSS с использованием линейных градиентов */
-.grid-background {
+/* Фон: Андезитовая инженерная сетка */
+.andesite-grid-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
-    /* Создаем сетку 40px на 40px */
-    background-size: 40px 40px;
+
+    /* 1. Создаем эффект мелкозернистого камня (шум) с помощью линейных градиентов */
     background-image:
-        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    /* Кастомная CSS-переменная для эффекта параллакса через JS */
+        radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 0),
+        linear-gradient(to right, rgba(58, 63, 71, 0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(58, 63, 71, 0.15) 1px, transparent 1px);
+
+    /* Размеры: зернистость камня + размер клеток 50px */
+    background-size: 4px 4px, 50px 50px, 50px 50px;
+
+    /* Смещение для эффекта параллакса из JS */
     transform: translate(var(--mx, 0px), var(--my, 0px));
     will-change: transform;
 }
 
-/* Левая панель с текстом */
+/* Световое пятно за курсором, подсвечивающее минералы */
+.glow-pointer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 255, 204, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Левый сайдбар в стиле Create */
 .about-sidebar {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
-    max-width: 550px; /* Ограничиваем ширину текста слева */
+    max-width: 560px;
     padding: 60px;
-    background: linear-gradient(to right, #050508 70%, transparent); /* Мягкое затенение сетки под текстом */
+    /* Затемнение фона под текстом для безупречной читаемости */
+    background: linear-gradient(to right, #0b0c0e 75%, transparent);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -48,32 +71,33 @@ body {
 .sidebar-content {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 32px;
 }
 
-/* Текстовые элементы */
+/* Бейдж */
 .badge-create {
     align-self: flex-start;
-    background: rgba(99, 102, 241, 0.1);
-    color: #818cf8;
+    background: rgba(0, 255, 204, 0.06);
+    color: #00ffcc; /* Неоновый кристаллический акцент */
     padding: 6px 14px;
     border-radius: 8px;
     font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    border: 1px solid rgba(99, 102, 241, 0.2);
+    border: 1px solid rgba(0, 255, 204, 0.2);
 }
 
+/* Заголовок с фирменным градиентом */
 .project-title {
-    font-size: 2.8rem;
+    font-size: 3rem;
     font-weight: 800;
     line-height: 1.15;
     letter-spacing: -0.5px;
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #6366f1, #d946ef);
+    background: linear-gradient(135deg, #00ffcc, #4f46e5);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -81,7 +105,7 @@ body {
 .info-block {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
 }
 
 .project-desc {
@@ -90,13 +114,13 @@ body {
     line-height: 1.6;
 }
 
-/* Список характеристик */
+/* Список спецификаций */
 .specs-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    gap: 14px;
+    border-left: 2px solid rgba(58, 63, 71, 0.4);
     padding-left: 20px;
 }
 
@@ -108,30 +132,31 @@ body {
 .specs-list li span {
     color: #ffffff;
     font-weight: 600;
-    margin-right: 5px;
+    margin-right: 6px;
 }
 
-/* Кнопка возврата */
+/* Кнопка возврата на главную */
 .btn-back {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     background: transparent;
     color: #ffffff;
     text-decoration: none;
-    padding: 12px 24px;
+    padding: 14px 28px;
     font-weight: 600;
     font-size: 0.9rem;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-back:hover {
     background: #ffffff;
-    color: #050508;
+    color: #0b0c0e;
     border-color: #ffffff;
     transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 255, 204, 0.1);
 }
 
 .arrow-icon {
@@ -142,14 +167,17 @@ body {
     transform: translateX(-4px);
 }
 
-/* Мобильная адаптивность */
+/* Мобильные экраны */
 @media (max-width: 768px) {
     .about-sidebar {
         max-width: 100%;
         padding: 40px 24px;
-        background: #050508; /* На мобильных полностью перекрываем фон для читаемости */
+        background: #0b0c0e;
     }
     .project-title {
-        font-size: 2.2rem;
+        font-size: 2.3rem;
+    }
+    .glow-pointer {
+        display: none; /* Отключаем тяжелый свет на мобильных */
     }
 }
