@@ -1,0 +1,428 @@
+/* Улучшенная цветовая палитра Create: Латунь, Медь, Андезит, Закаленное стекло */
+:root {
+    --bg-dark: #1a191e;
+    --bg-card: #252429;
+    --andesite: #434547;
+    --copper: #cd7031;
+    --copper-bright: #e38444;
+    --brass: #deb146;
+    --brass-bright: #f0c765;
+    --zinc: #7f8c8d;
+    --text-light: #f5f5f7;
+    --text-dim: #a0a0aa;
+    --discord-color: #5865F2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Инженерный фон-чертеж */
+.blueprint-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(221, 177, 70, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(221, 177, 70, 0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -2;
+    pointer-events: none;
+}
+
+.steam-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 80% 20%, rgba(205, 112, 49, 0.06), transparent 60%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Декоративные трубы */
+.pipe-decor {
+    position: fixed;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(90deg, #964e1f, var(--copper), #ef9c65, #964e1f);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    z-index: 90;
+    pointer-events: none;
+}
+.left-pipe { left: 10px; }
+.right-pipe { right: 10px; }
+
+/* Анимации механизмов */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes spin-reverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+.spin { animation: spin 5s linear infinite; }
+.spin-reverse { animation: spin-reverse 5s linear infinite; }
+.spin-slow { animation: spin 30s linear infinite; }
+
+/* Шапка сайта */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(26, 25, 30, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 4px solid var(--copper);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--brass);
+}
+
+.logo-gears {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+.gear-1 { font-size: 24px; color: var(--copper); position: absolute; top: 0; left: 0; }
+.gear-2 { font-size: 16px; color: var(--zinc); position: absolute; bottom: 0; right: -4px; }
+
+.logo span span { color: var(--text-light); }
+
+nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+nav a:hover {
+    color: var(--brass-bright);
+    transform: translateY(-2px);
+}
+
+/* Главный экран */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 680px;
+    z-index: 2;
+}
+
+.badge {
+    background: rgba(205, 112, 41, 0.15);
+    border: 1px solid var(--copper);
+    color: var(--copper-bright);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    width: max-content;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 25px;
+    color: var(--text-light);
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: var(--text-dim);
+}
+
+.hero p strong { color: var(--brass); }
+
+/* Мощные Механические Кнопки */
+.hero-buttons {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 18px 35px;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.15s ease-in-out;
+}
+
+/* Кнопка в стиле латунного механизма */
+.btn-create {
+    background: linear-gradient(to bottom, var(--brass-bright), var(--brass));
+    color: #1a191e;
+    box-shadow: 0 6px 0 #947120, 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.btn-create:hover {
+    background: linear-gradient(to bottom, #f7d37e, var(--brass-bright));
+    transform: translateY(2px);
+    box-shadow: 0 4px 0 #947120, 0 6px 15px rgba(0,0,0,0.4);
+}
+
+.btn-create:active {
+    transform: translateY(6px);
+    box-shadow: 0 0 0 #947120, 0 2px 5px rgba(0,0,0,0.4);
+}
+
+/* Кнопка Дискорда */
+.btn-discord {
+    background: linear-gradient(to bottom, #6a76f5, var(--discord-color));
+    color: white;
+    box-shadow: 0 6px 0 #3b45c2, 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.btn-discord:hover {
+    background: linear-gradient(to bottom, #828dfa, #6a76f5);
+    transform: translateY(2px);
+    box-shadow: 0 4px 0 #3b45c2, 0 6px 15px rgba(0,0,0,0.4);
+}
+
+.btn-discord:active {
+    transform: translateY(6px);
+    box-shadow: 0 0 0 #3b45c2, 0 2px 5px rgba(0,0,0,0.4);
+}
+
+/* Огромная декоративная шестеренка на фоне */
+.hero-gear-decor {
+    position: absolute;
+    right: -50px;
+    bottom: -50px;
+    font-size: 550px;
+    color: rgba(222, 177, 70, 0.02);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Разделы */
+.features, .start-guide {
+    padding: 100px 10%;
+    position: relative;
+}
+
+.features {
+    background-color: var(--bg-card);
+    border-top: 4px solid var(--andesite);
+    border-bottom: 4px solid var(--andesite);
+    box-shadow: inset 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.section-title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.gauge-icon {
+    font-size: 32px;
+    color: var(--copper);
+}
+
+.features h2, .start-guide h2 {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--brass);
+    letter-spacing: 1px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 16px;
+    margin-bottom: 60px;
+}
+
+/* Карточки с заклепками (Стиль плит/корпусов механизмов) */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--bg-dark);
+    padding: 45px 30px;
+    border-radius: 4px;
+    border: 3px solid var(--andesite);
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Заклепки по углам карточек */
+.card-rivet {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #555;
+    border-radius: 50%;
+    box-shadow: inset -1px -1px 2px #000, 1px 1px 1px rgba(255,255,255,0.1);
+}
+.tl { top: 8px; left: 8px; }
+.tr { top: 8px; right: 8px; }
+.bl { bottom: 8px; left: 8px; }
+.br { bottom: 8px; right: 8px; }
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--copper);
+    box-shadow: 0 12px 24px rgba(205, 112, 49, 0.15);
+}
+
+.card i {
+    font-size: 42px;
+    color: var(--copper);
+    margin-bottom: 25px;
+    transition: transform 0.3s;
+}
+
+.card:hover i {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--copper-bright);
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: var(--text-light);
+    font-weight: 700;
+}
+
+.card p {
+    color: var(--text-dim);
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* Этапы / Шаги инструкции */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px;
+}
+
+.step {
+    background: var(--bg-card);
+    padding: 35px;
+    border-radius: 4px;
+    position: relative;
+    border: 2px solid #2f2e34;
+    border-left: 5px solid var(--copper);
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.15);
+}
+
+.step:hover {
+    border-left-color: var(--brass);
+}
+
+.step-num {
+    font-size: 36px;
+    font-weight: 900;
+    color: rgba(222, 177, 70, 0.15);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-family: monospace;
+}
+
+.step h3 {
+    font-size: 20px;
+    color: var(--brass-bright);
+    margin-bottom: 15px;
+}
+
+.step p {
+    color: var(--text-dim);
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.step p strong {
+    color: var(--text-light);
+}
+
+/* Подвал сайта */
+footer {
+    text-align: center;
+    padding: 50px;
+    background: #111014;
+    color: #555459;
+    border-top: 4px solid var(--andesite);
+    position: relative;
+}
+
+.footer-gear {
+    font-size: 28px;
+    color: #222126;
+    margin-bottom: 15px;
+}
+
+/* Адаптивность для смартфонов */
+@media (max-width: 768px) {
+    header { padding: 15px 5%; }
+    nav { display: none; } /* Скрываем навигацию на мобильных для экономии места */
+    .hero { padding: 60px 5%; text-align: center; }
+    .hero-content { margin: 0 auto; }
+    .hero h1 { font-size: 36px; }
+    .hero-buttons { justify-content: center; }
+    .pipe-decor { display: none; } /* Убираем трубы на экранах телефонов */
+}
