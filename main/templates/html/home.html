@@ -4,66 +4,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create World — Приватный Minecraft Сервер</title>
-    <!-- Подключение внешнего файла стилей CSS -->
+    <title>Create World — Приватный Сервер Minecraft</title>
+    <!-- Подключаем кастомный пиксельный шрифт Minecraft для заголовков -->
+    <link href="https://cdnfonts.com" rel="stylesheet">
+    <!-- Подключаем современный читаемый шрифт для основного текста -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <!-- Подключаем наш мощный CSS -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
 
-    <!-- Шапка -->
+    <!-- Фоновые анимированные шестерёнки мода Create -->
+    <div class="gear-bg gear-1">⚙️</div>
+    <div class="gear-bg gear-2">⚙️</div>
+
+    <!-- Шапка сайта -->
     <header>
-        <h1>Create World</h1>
-        <p>Инженерия, механизмы и ламповое выживание для своих</p>
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <h1 class="pixel-text">CREATE WORLD</h1>
+            <p>Закрытый индустриальный сервер • Версия 1.20.1</p>
+            <div class="status-badge">
+                <span class="status-dot"></span> Сервер онлайн
+            </div>
+        </div>
     </header>
 
-    <!-- Основной контент -->
-    <div class="container">
+    <!-- Основной контейнер -->
+    <main class="container">
 
-        <!-- О сервере -->
-        <section>
-            <h2>О нашем проекте</h2>
-            <p>Добро пожаловать на приватный сервер, полностью построенный вокруг культовой модификации <strong>Create</strong>. У нас нет публичного доступа, гриферов и токсичных игроков. Мы собираем сообщество людей, влюбленных в автоматизацию, поезда и эстетику индустриальной эпохи в Minecraft.</p>
+        <!-- Секция: О проекте -->
+        <section class="card animate-fade">
+            <h2 class="pixel-text section-title">🛠️ О сервере</h2>
+            <p>Добро пожаловать в рай для инженеров. <strong>Create World</strong> — это приватный Minecraft сервер с жестким Whitelist, где главным двигателем прогресса является мод <strong>Create</strong>. Забудь про скучную рутину: здесь правят кинетическая энергия, крутящий момент и безумные автоматические заводы.</p>
         </section>
 
-        <!-- Почему Create? -->
-        <section>
-            <h2>Что тебя ждет?</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>Автоматизация</h3>
-                    <p>Никаких скучных сундуков. Строй полноценные заводы, конвейеры, ветряные мельницы и буровые установки.</p>
+        <!-- Секция: Фичи -->
+        <section class="card animate-fade">
+            <h2 class="pixel-text section-title">⚙️ Что тебя ждет?</h2>
+            <div class="grid-features">
+                <div class="feature-item">
+                    <div class="feature-icon">🏭</div>
+                    <h3 class="pixel-text">Автоматизация</h3>
+                    <p>Конвейеры, механические руки и буровые установки сделают всю грязную работу за тебя.</p>
                 </div>
-                <div class="feature-card">
-                    <h3>Логистика и Поезда</h3>
-                    <p>Создавай огромные железнодорожные сети для перевозки ресурсов между базами игроков.</p>
+                <div class="feature-item">
+                    <div class="feature-icon">🚂</div>
+                    <h3 class="pixel-text">Поезда</h3>
+                    <p>Прокладывай масштабные ж/д магистрали, собирай кастомные составы и автоматизируй логистику.</p>
                 </div>
-                <div class="feature-card">
-                    <h3>Приватность</h3>
-                    <p>Вход только по белому списку (Whitelist). Твои постройки и механизмы в полной безопасности.</p>
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="pixel-text">Приватность</h3>
+                    <p>Никаких случайных гриферов. Вход строго по анкетам. Твои мега-заводы под надежной защитой.</p>
                 </div>
-                <div class="feature-card">
-                    <h3>Ванильная атмосфера</h3>
-                    <p>Мод органично дополняет игру, не ломая классическое выживание и экономику.</p>
+                <div class="feature-item">
+                    <div class="feature-icon">💎</div>
+                    <h3 class="pixel-text">Экономика</h3>
+                    <p>Обменивайся ресурсами с другими инженерами и строй совместные индустриальные хабы.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Как попасть -->
-        <section>
-            <h2>Как попасть на сервер?</h2>
-            <p>Мы тщательно отбираем игроков, чтобы сохранить дружелюбную и творческую атмосферу. Для получения доступа тебе нужно заполнить небольшую анкету в нашем Discord или через форму заявок.</p>
-
-            <div class="center">
-                <!-- Замени # на реальную ссылку на Discord или форму -->
-                <a href="#" class="cta-btn">Подать заявку на сервер</a>
-            </div>
+        <!-- Секция: Как попасть -->
+        <section class="card cta-card text-center animate-fade">
+            <h2 class="pixel-text">🚀 Стань частью команды</h2>
+            <p class="cta-desc">Мы ищем адекватных, творческих людей, готовых строить невероятные механизмы и развивать сервер вместе.</p>
+            <!-- Сюда вставляй ссылку на ваш Дискорд -->
+            <a href="https://discord.gg" target="_blank" class="pixel-btn">
+                <span>ПОДАТЬ ЗАЯВКУ</span>
+            </a>
         </section>
 
-    </div>
+    </main>
 
     <!-- Подвал -->
     <footer>
-        <p>&copy; 2026 Create World Server. Все права защищены. Проект не связан с Mojang Studios.</p>
+        <p>Copyright © 2026 Create World. Все права защищены.</p>
+        <p class="disclaimer">This site is not affiliated with Mojang Studios.</p>
     </footer>
 
 </body>
