@@ -1,102 +1,113 @@
-/* Подключаем футуристичный шрифт */
+/* Подключаем качественный шрифт для инженерных интерфейсов */
 @import url('https://googleapis.com');
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Geist', system-ui, -apple-system, sans-serif;
 }
 
 body {
-    background-color: #030014;
+    /* Фон: глубокий темный андезит с медным и латунным свечением на заднем плане */
+    background-color: #121214;
     background-image:
-        radial-gradient(circle at 0% 0%, rgba(122, 92, 250, 0.15) 0, transparent 40%),
-        radial-gradient(circle at 100% 100%, rgba(244, 63, 94, 0.12) 0, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.06) 0, transparent 50%);
-    color: #f4f4f5;
+        radial-gradient(circle at 10% 10%, rgba(224, 130, 68, 0.08) 0, transparent 40%),  /* Медное свечение */
+        radial-gradient(circle at 90% 90%, rgba(230, 175, 46, 0.06) 0, transparent 40%),  /* Латунное свечение */
+        radial-gradient(circle at 50% 50%, rgba(100, 149, 137, 0.04) 0, transparent 50%); /* Цинковый бирюзовый оттенок */
+    color: #e2e8f0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
-    overflow-x: hidden;
-    perspective: 1000px; /* Необходимо для 3D-эффекта наклона */
+    perspective: 1200px;
 }
 
-/* Контейнер карточки с поддержкой 3D трансформаций */
+/* Контейнер карточки — полированный темный андезит со стеклянной текстурой */
 .project-card {
-    background: rgba(10, 10, 18, 0.6);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
+    background: rgba(30, 30, 36, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(139, 144, 153, 0.15); /* Андезитовая рамка */
+    border-radius: 20px;
     max-width: 600px;
     width: 100%;
     overflow: hidden;
     position: relative;
     box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.05),
-        0 30px 60px -15px rgba(0, 0, 0, 0.8),
-        0 0 50px -10px rgba(122, 92, 250, 0.15);
+        0 0 0 1px rgba(255, 255, 255, 0.03),
+        0 30px 60px -15px rgba(0, 0, 0, 0.7),
+        0 0 50px -10px rgba(224, 130, 68, 0.05);
 
-    /* Свойства для плавного JS-наклона */
     transform-style: preserve-3d;
     transition: transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
     will-change: transform;
 }
 
 .project-card:hover {
-    border-color: rgba(122, 92, 250, 0.3);
+    border-color: rgba(230, 175, 46, 0.3); /* Плавное латунное свечение при наведении */
     box-shadow:
-        0 0 0 1px rgba(122, 92, 250, 0.2),
-        0 40px 80px -15px rgba(0, 0, 0, 0.9),
-        0 0 60px -5px rgba(122, 92, 250, 0.25);
+        0 0 0 1px rgba(230, 175, 46, 0.1),
+        0 40px 80px -15px rgba(0, 0, 0, 0.85),
+        0 0 60px -5px rgba(224, 130, 68, 0.15);
 }
 
-/* Бегущая линия сверху */
+/* Инженерная градиентная полоса Create (Латунь -> Медь -> Цинк -> Латунь) */
 .project-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 3px;
-    background: linear-gradient(90deg, #7c3aed, #06b6d4, #f43f5e, #7c3aed);
+    top: 0; left: 0;
+    width: 200%; height: 3px;
+    background: linear-gradient(90deg, #e6af2e, #e08244, #649589, #e6af2e);
     background-size: 50% 100%;
-    animation: borderMove 6s linear infinite;
+    animation: machineRun 8s linear infinite;
     z-index: 10;
 }
 
-@keyframes borderMove {
+@keyframes machineRun {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
 
+/* Внутреннее свечение подложки */
+.card-glow-bg {
+    position: absolute;
+    top: -10%; right: -10%;
+    width: 50%; height: 50%;
+    background: radial-gradient(circle, rgba(230, 175, 46, 0.08) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(30px);
+}
+
+/* Шапка карточки */
 .header {
-    background: radial-gradient(dashed at top left, rgba(122, 92, 250, 0.1), transparent);
-    padding: 36px 32px 28px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    transform: translateZ(30px); /* Выносит шапку в 3D слой */
+    background: radial-gradient(circle at top left, rgba(230, 175, 46, 0.05), transparent);
+    padding: 36px 32px 24px;
+    border-bottom: 1px solid rgba(139, 144, 153, 0.12);
+    transform: translateZ(30px);
 }
 
 .header h1 {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 28px;
-    font-weight: 800;
+    font-weight: 700;
     color: #ffffff;
     margin-bottom: 8px;
-    letter-spacing: -0.03em;
-    background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+    letter-spacing: -0.02em;
+    background: linear-gradient(180deg, #ffffff 40%, #a1a1aa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+/* Статус-индикатор в стиле электронных ламп или шестеренок */
 .subtitle {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: #22d3ee;
+    color: #e6af2e; /* Фирменная золото-латунь */
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -104,72 +115,101 @@ body {
 
 .subtitle::before {
     content: '';
-    width: 6px;
-    height: 6px;
-    background-color: #22d3ee;
+    width: 6px; height: 6px;
+    background-color: #e6af2e;
     border-radius: 50%;
-    box-shadow: 0 0 10px #22d3ee;
-    animation: pulse 2s infinite alternate;
+    box-shadow: 0 0 10px #e6af2e;
+    animation: gearPulse 2s infinite alternate;
 }
 
-@keyframes pulse {
-    0% { transform: scale(0.9); opacity: 0.6; }
-    100% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 14px #22d3ee; }
+@keyframes gearPulse {
+    0% { transform: scale(0.9); opacity: 0.5; }
+    100% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 12px #e08244; }
 }
 
 .content {
     padding: 32px;
-    transform: translateZ(20px); /* Выносит контент в 3D слой */
+    transform: translateZ(20px);
 }
 
+/* Текстовые блоки: Андезит + Металлы */
 .section-blue, .section-orange {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     padding: 20px;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
     background: rgba(255, 255, 255, 0.01);
-    position: relative;
-    overflow: hidden;
+    transition: background 0.3s ease;
 }
 
-.section-blue { border-left: 4px solid #3b82f6; }
-.section-blue h2 { color: #60a5fa; font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+.section-blue:hover, .section-orange:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
 
-.section-orange { border-left: 4px solid #f43f5e; }
-.section-orange h2 { color: #fb7185; font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+/* Цинковый / Насыщенный сине-серый сплав */
+.section-blue {
+    border-left: 4px solid #649589;
+    background: linear-gradient(135deg, rgba(100, 149, 137, 0.06), transparent);
+}
+.section-blue h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #8cb8ae;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
 
-.content p { font-size: 14px; line-height: 1.6; color: #a1a1aa; font-weight: 300; }
+/* Медный тепло-оранжевый сплав */
+.section-orange {
+    border-left: 4px solid #e08244;
+    background: linear-gradient(135deg, rgba(224, 130, 68, 0.06), transparent);
+}
+.section-orange h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #fca56a;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
 
+.content p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #b1b5bc;
+    font-weight: 400;
+}
+
+/* Сетка со статистикой */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 16px;
-    margin-top: 36px;
+    margin-top: 32px;
 }
 
-/* Интерактивные виджеты со световым треком мыши */
+/* Механические виджеты со световым треком меди/латуни */
 .stat-box {
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 24px 16px;
+    background: rgba(20, 20, 25, 0.5);
+    border: 1px solid rgba(139, 144, 153, 0.12);
+    border-radius: 12px;
+    padding: 22px 16px;
     text-align: center;
     position: relative;
     overflow: hidden;
     transition: transform 0.2s ease, border-color 0.3s ease, background 0.3s ease;
 }
 
-/* Динамический блик-светодиод, управляемый из JS */
+/* Динамическая JS подсветка контура (цвет меди) */
 .stat-box::before {
     content: '';
     position: absolute;
-    top: 0; left: 0;
-    right: 0; bottom: 0;
-    border-radius: 16px;
-    padding: 1px; /* Толщина светящейся рамки */
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 12px;
+    padding: 1px;
     background: radial-gradient(
-        120px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-        rgba(255, 255, 255, 0.15),
+        110px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+        rgba(224, 130, 68, 0.25),
         transparent 80%
     );
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -181,15 +221,15 @@ body {
     pointer-events: none;
 }
 
-/* Внутренний подсвет фона за курсором */
+/* Внутренний подсвет фона за курсором (латунь) */
 .stat-box::after {
     content: '';
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: radial-gradient(
-        140px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-        rgba(122, 92, 250, 0.06),
+        130px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+        rgba(230, 175, 46, 0.05),
         transparent 80%
     );
     opacity: 0;
@@ -199,61 +239,52 @@ body {
 }
 
 .stat-box:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+    background: rgba(35, 35, 40, 0.6);
+    border-color: rgba(139, 144, 153, 0.25);
 }
 
 .stat-box:hover::before,
 .stat-box:hover::after {
-    opacity: 1; /* Включаем подсветку только при наведении */
+    opacity: 1;
 }
 
 .stat-box * {
     position: relative;
-    z-index: 2; /* Поднимаем текст над бликом JS */
+    z-index: 2;
 }
 
+/* Металлический блеск цифр */
 .stat-box .number {
     display: block;
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: -0.04em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
     margin-bottom: 4px;
-    background: linear-gradient(135deg, #ffffff 30%, #71717a 100%);
+    background: linear-gradient(135deg, #ffffff 40%, #e6af2e 150%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .stat-box .label {
     display: block;
-    font-size: 11px;
-    color: #71717a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: #767d8a;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     font-weight: 600;
 }
 
+/* Подвал */
 .footer {
-    background: rgba(5, 5, 10, 0.4);
-    padding: 24px;
+    background: rgba(15, 15, 18, 0.6);
+    padding: 20px;
     text-align: center;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: #52525b;
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-/* Дополнение в CSS для работы объемного фона */
-.card-glow-bg {
-    position: absolute;
-    top: -20%;
-    right: -20%;
-    width: 60%;
-    height: 60%;
-    background: radial-gradient(circle, rgba(122, 92, 250, 0.15) 0%, transparent 70%);
-    z-index: 0;
-    pointer-events: none;
-    filter: blur(40px);
+    color: #4f555f;
+    border-top: 1px solid rgba(139, 144, 153, 0.1);
+    letter-spacing: 0.5px;
 }
