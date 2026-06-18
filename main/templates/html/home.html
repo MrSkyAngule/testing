@@ -1,266 +1,151 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="h-100">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Александр, нажми!</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #090d16;
-            min-height: 100vh;
-            min-height: -webkit-fill-available;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            color: #fff;
-            padding: 15px;
-            perspective: 1200px;
-        }
-
-        html { height: -webkit-fill-available; }
-
-        /* Стартовая огненная кнопка */
-        .start-btn {
-            position: absolute;
-            background: transparent;
-            color: #ff5500;
-            border: 2px solid #ff5500;
-            padding: 16px 45px;
-            font-size: 1.3rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 85, 0, 0.2), inset 0 0 10px rgba(255, 85, 0, 0.1);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 100;
-        }
-
-        .start-btn:active {
-            transform: scale(0.9);
-            box-shadow: 0 0 40px #ff5500;
-        }
-
-        /* Огненная взрывная волна */
-        .wave {
-            position: absolute;
-            border: 4px solid #ff5500;
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 1;
-            z-index: 50;
-            box-shadow: 0 0 30px #ff5500, inset 0 0 20px #ff5500;
-        }
-
-        .wave.animate {
-            animation: rip 0.8s cubic-bezier(0.1, 0.4, 0.1, 1) forwards;
-        }
-
-        @keyframes rip {
-            0% {
-                width: 0px;
-                height: 0px;
-                opacity: 1;
-                border-width: 8px;
-            }
-            100% {
-                width: 1500px;
-                height: 1500px;
-                opacity: 0;
-                border-width: 1px;
-            }
-        }
-
-        /* Уменьшенная компактная карточка под мобилки */
-        .card {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 85, 0, 0.2);
-            padding: 25px 20px;
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-            max-width: 340px; /* Уменьшили ширину */
-            width: 100%;
-            z-index: 10;
-            transform: scale(0) rotateX(-90deg);
-            opacity: 0;
-            pointer-events: none;
-            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
-        }
-
-        .card.reveal {
-            transform: scale(1) rotateX(0deg);
-            opacity: 1;
-            pointer-events: auto;
-            border-color: rgba(255, 85, 0, 0.3);
-            box-shadow: 0 20px 40px rgba(255, 85, 0, 0.1), 0 0 30px rgba(0,0,0,0.5);
-        }
-
-        h1 {
-            font-size: 1.3rem;
-            color: #94a3b8;
-            font-weight: 300;
-            margin-bottom: 2px;
-        }
-
-        .card.reveal h1 {
-            color: #f1c40f;
-            text-shadow: 0 0 10px rgba(241, 196, 15, 0.2);
-        }
-
-        /* Компактное имя */
-        .name {
-            font-size: 2.2rem;
-            display: block;
-            font-weight: 900;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            background: linear-gradient(90deg, #ff7e5f, #feb47b, #f1c40f, #ff7e5f);
-            background-size: 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 6s linear infinite;
-        }
-
-        @keyframes glow {
-            0% { background-position: 0%; }
-            100% { background-position: 300%; }
-        }
-
-        p {
-            color: #f8fafc;
-            font-size: 0.95rem; /* Немного уменьшили шрифт для компактности */
-            text-align: left;
-            line-height: 1.5;
-        }
-
-        /* Пешие походные эмодзи (без машин и дичи) */
-        .particle {
-            position: fixed;
-            z-index: 999;
-            pointer-events: none;
-            font-size: 26px;
-            user-select: none;
-            animation: flyOut 1.8s cubic-bezier(0.1, 0.8, 0.25, 1) forwards;
-        }
-
-        @keyframes flyOut {
-            0% {
-                transform: translate(0, 0) rotate(0deg) scale(0.3);
-                opacity: 1;
-            }
-            80% { opacity: 1; }
-            100% {
-                transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1.2);
-                opacity: 0;
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create-Техно Сервер | Инженерия в Minecraft</title>
+    <!-- Подключаем Bootstrap CSS -->
+    <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-dark text-light d-flex flex-column h-100">
 
-    <button class="start-btn" id="clickMeBtn">Нажми</button>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-body-tertiary border-bottom border-secondary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-warning" href="#">⚙️ CREATE-CRAFT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">О моде</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#how-to-join">Как зайти?</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <div class="wave" id="shockwave"></div>
+    <!-- Главный экран (Hero) -->
+    <header class="bg-black py-5 text-center border-bottom border-warning border-3">
+        <div class="container py-5">
+            <div class="badge bg-warning text-dark mb-3 px-3 py-2 fw-bold text-uppercase rounded-pill">Закрытый технический сервер</div>
+            <h1 class="display-3 fw-bold mb-3 text-warning">Покори Эру Механизмов!</h1>
+            <p class="lead fs-4 text-secondary mx-auto mb-5" style="max-width: 700px;">
+                Строишь огромные заводы? Мечтаешь о собственной сети железных дорог с поездами?
+                У нас нет лагов, а вход доступен только для адекватного комьюнити через Discord.
+            </p>
 
-    <div class="card" id="mainCard">
-        <h1>С Днём Рождения,</h1>
-        <span class="name">Александр!</span>
-        <p>
-            <strong>Саня, с праздником! 🔥✊</strong><br><br>
-            Желаю, чтобы твоя жизнь была такой же масштабной, как и твои экспедиции! Пусть дикие тропы <strong>Алтая</strong>, вершины <strong>Урала</strong> и берега <strong>Байкала</strong> всегда заряжают тебя энергией свободы.<br><br>
-            Желаем крепких ног, легкого рюкзака, отличной погоды на маршрутах и адекватных туристов. Пусть огонь в твоем костре никогда не угасает, а любимое дело приносит лютый кайф и крутой доход! Только вперед! 🎒🏔️🌲
-        </p>
-    </div>
+            <!-- ГЛАВНЫЙ CALL TO ACTION (Кнопка Discord) -->
+            <div class="p-4 rounded-4 shadow-lg mx-auto bg-body-tertiary border border-secondary border-dashed" style="max-width: 500px;">
+                <h5 class="fw-bold text-white mb-3">🔒 Доступ ограничен через Whitelist</h5>
+                <!-- Замените href на вашу ссылку-приглашение -->
+                <a href="https://discord.gg" target="_blank" class="btn btn-warning btn-lg w-100 py-3 mb-2 shadow fw-bold text-uppercase fs-5">
+                    🤖 Войти через Discord
+                </a>
+                <small class="text-muted d-block mt-2">Подай заявку в текстовом канале за пару секунд!</small>
+            </div>
+        </div>
+    </header>
 
-    <script>
-        const button = document.getElementById('clickMeBtn');
-        const wave = document.getElementById('shockwave');
-        const card = document.getElementById('mainCard');
+    <!-- О моде Create -->
+    <section class="container my-5 py-4" id="about">
+        <h2 class="text-center fw-bold mb-5 text-warning">Что тебя ждет на сервере?</h2>
+        <div class="row g-4">
+            <!-- Карточка 1 -->
+            <div class="col-md-4">
+                <div class="card bg-body-tertiary border-secondary h-100 text-white shadow-sm">
+                    <div class="card-body p-4 text-center">
+                        <div class="display-4 mb-3">🚂</div>
+                        <h5 class="card-title fw-bold text-warning">Кастомные поезда</h5>
+                        <p class="card-text text-muted">Собирай составы из любых блоков, прокладывай рельсы между базами игроков и запускай расписание!</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Карточка 2 -->
+            <div class="col-md-4">
+                <div class="card bg-body-tertiary border-secondary h-100 text-white shadow-sm">
+                    <div class="card-body p-4 text-center">
+                        <div class="display-4 mb-3">🏭</div>
+                        <h5 class="card-title fw-bold text-warning">Авто-фабрики</h5>
+                        <p class="card-text text-muted">Забудь про нудное копание. Настрой конвейеры, дробилки и механические руки для полной автоматизации ресурсов.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Карточка 3 -->
+            <div class="col-md-4">
+                <div class="card bg-body-tertiary border-secondary h-100 text-white shadow-sm">
+                    <div class="card-body p-4 text-center">
+                        <div class="display-4 mb-3">🛡️</div>
+                        <h5 class="card-title fw-bold text-warning">Чистый онлайн</h5>
+                        <p class="card-text text-muted">Благодаря проходке через Discord, на сервере играют только увлеченные инженеры. Никаких гриферов!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Исключительно пешие походные элементы
-        const trekShapes = ['🏔️', '⛺', '🔥', '🎒', '💥', '🦅', '🐺', '🧭', '🌲', '🗺️', '👣', '🧗‍♂️'];
+    <!-- Пошаговая инструкция (Accordion) -->
+    <section class="container my-5 py-4" id="how-to-join">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h3 class="text-center fw-bold mb-4 text-warning">Как начать играть? Всего 3 простых шага</h3>
 
-        function playSound() {
-            try {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                if (!AudioContext) return;
-                const ctx = new AudioContext();
+                <div class="accordion accordion-flush rounded shadow border border-secondary" id="stepsAccordion">
 
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(500, ctx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.5);
+                    <!-- Шаг 1 -->
+                    <div class="accordion-item bg-body-tertiary text-white">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button bg-body-tertiary text-warning fw-bold shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#stepOne">
+                                Шаг 1: Вступить в наш Discord
+                            </button>
+                        </h2>
+                        <div id="stepOne" class="accordion-collapse collapse show" data-bs-parent="#stepsAccordion">
+                            <div class="accordion-body text-secondary border-top border-secondary">
+                                Нажми на желтую кнопку вверху страницы и присоединяйся к нашему Discord-серверу. Это главный хаб нашего проекта.
+                            </div>
+                        </div>
+                    </div>
 
-                gain.gain.setValueAtTime(0.25, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+                    <!-- Шаг 2 -->
+                    <div class="accordion-item bg-body-tertiary text-white">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button bg-body-tertiary text-warning fw-bold collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#stepTwo">
+                                Шаг 2: Подать заявку на Whitelist
+                            </button>
+                        </h2>
+                        <div id="stepTwo" class="accordion-collapse collapse" data-bs-parent="#stepsAccordion">
+                            <div class="accordion-body text-secondary border-top border-secondary">
+                                Перейди в канал <span class="badge bg-warning text-dark">#заявки</span>, напиши свой игровой никнейм и коротко расскажи о себе. Модераторы добавят тебя в белый список!
+                            </div>
+                        </div>
+                    </div>
 
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                osc.start();
-                osc.stop(ctx.currentTime + 0.5);
-            } catch (e) {}
-        }
+                    <!-- Шаг 3 -->
+                    <div class="accordion-item bg-body-tertiary text-white">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button bg-body-tertiary text-warning fw-bold collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#stepThree">
+                                Шаг 3: Установить сборку модов
+                            </button>
+                        </h2>
+                        <div id="stepThree" class="accordion-collapse collapse" data-bs-parent="#stepsAccordion">
+                            <div class="accordion-body text-secondary border-top border-secondary">
+                                Скачай наш кастомный модпак по ссылке из закрепа в Discord (там нужен сам мод <b>Create</b> и аддоны). Запускай игру, бери IP в чате Дискорда и заходи!
+                            </div>
+                        </div>
+                    </div>
 
-        function spawnParticles(startX, startY) {
-            for (let i = 0; i < 60; i++) { // Уменьшено количество частиц для мобильных
-                const p = document.createElement('div');
-                p.classList.add('particle');
-                p.textContent = trekShapes[Math.floor(Math.random() * trekShapes.length)];
+                </div>
+            </div>
+        </div>
+    </section>
 
-                const angle = Math.random() * Math.PI * 2;
-                const distance = Math.random() * 250 + 100;
-                const x = Math.cos(angle) * distance;
-                const y = Math.sin(angle) * distance - 30;
-                const r = Math.random() * 720 - 360;
+    <!-- Подвал -->
+    <footer class="text-center py-4 bg-body-tertiary text-muted border-top border-secondary mt-auto">
+        <p class="mb-0">⚙️ CREATE-CRAFT &copy; 2026. Сделано на чистом Bootstrap.</p>
+    </footer>
 
-                p.style.left = startX + 'px';
-                p.style.top = startY + 'px';
-                p.style.setProperty('--x', `${x}px`);
-                p.style.setProperty('--y', `${y}px`);
-                p.style.setProperty('--r', `${r}deg`);
-                p.style.animationDuration = (Math.random() * 1.0 + 0.8) + 's';
-
-                document.body.appendChild(p);
-                setTimeout(() => p.remove(), 1800);
-            }
-        }
-
-        button.addEventListener('click', (e) => {
-            const rect = button.getBoundingClientRect();
-            const x = rect.left + rect.width / 2;
-            const y = rect.top + rect.height / 2;
-
-            wave.style.left = x + 'px';
-            wave.style.top = y + 'px';
-
-            playSound();
-            wave.classList.add('animate');
-
-            button.style.transform = 'scale(0)';
-            button.style.opacity = '0';
-            setTimeout(() => button.remove(), 300);
-
-            setTimeout(() => {
-                card.classList.add('reveal');
-                document.body.style.background = '#060911';
-                spawnParticles(x, y);
-            }, 2200 ? 250 : 250); // Фиксированная задержка для плавности
-        });
-    </script>
+    <!-- Подключаем Bootstrap JS -->
+    <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
