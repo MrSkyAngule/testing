@@ -1,10 +1,67 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О проекте | Create Style</title>
+    <!-- Подключаем внешний файл стилей -->
+    <link rel="stylesheet" href="{% static'style.css'%} ">
 </head>
 <body>
+
+    <div class="project-card">
+        <!-- ШАПКА -->
+        <div class="header">
+            <!-- НАЗВАНИЕ ПРОЕКТА ТУТ -->
+            <h1>НАЗВАНИЕ ПРОЕКТА</h1>
+            <div class="subtitle">Инженерный модуль / Статус: Активен</div>
+        </div>
+
+        <!-- ОСНОВНОЙ БЛОК С ТЕКСТОМ -->
+        <div class="content">
+
+            <!-- СЕКЦИЯ 1: ОПИСАНИЕ -->
+            <div class="section-blue">
+                <h2>О проекте</h2>
+                <!-- ТЕКСТ ОПИСАНИЯ ТУТ -->
+                <p>Удалите этот текст и напишите здесь главную суть вашего проекта. Чем вы занимаетесь, какую задачу решаете и почему это круто. Стиль Create подразумевает механизмы, автоматизацию и креатив.</p>
+            </div>
+
+            <!-- СЕКЦИЯ 2: ЦЕЛИ -->
+            <div class="section-orange">
+                <h2>Наши Цели</h2>
+                <!-- ТЕКСТ ЦЕЛЕЙ ТУТ -->
+                <p>Напишите здесь, каких результатов вы хотите достичь. Например: создание идеальной фабрики, автоматизация процессов или разработка уникальных механизмов для игроков.</p>
+            </div>
+
+            <!-- БЛОК С ЦИФРАМИ / МЕТРИКАМИ -->
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <!-- ЦИФРА 1 -->
+                    <span class="number">v1.0</span>
+                    <span class="label">Версия сборки</span>
+                </div>
+                <div class="stat-box">
+                    <!-- ЦИФРА 2 -->
+                    <span class="number">100%</span>
+                    <span class="label">Автоматизация</span>
+                </div>
+                <div class="stat-box">
+                    <!-- ЦИФРА 3 -->
+                    <span class="number">RPM 256</span>
+                    <span class="label">Скорость вращения</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ПОДВАЛ -->
+        <div class="footer">
+            <!-- ВАШЕ ИМЯ ИЛИ ТЕГ ТУТ -->
+            © 2026 Создано инженерами проекта. Все права защищены механизмом.
+        </div>
+    </div>
 
 </body>
 </html>
