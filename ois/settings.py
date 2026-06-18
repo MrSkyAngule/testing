@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'ois.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'HOLIK',
+        'NAME': 'holik',
         'USER': 'owner',
         'PASSWORD': 'GoodGod',
         'HOST': 'localhost',
