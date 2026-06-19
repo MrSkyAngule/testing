@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)rd(&7@jkhle88r12e2h!112!zmkwk-at)oa*ms5qw8w47+xzt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['91.107.123.35', 'uhrwerk.ru']
+ALLOWED_HOSTS = ['91.107.123.35', 'uhrwerk.ru', 'www.uhrwerk.ru']
 
 
 # Application definition
