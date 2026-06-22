@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-)rd(&7@jkhle88r12e2h!112!zmkwk-at)oa*ms5qw8w47+xzt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ваши домены']
+ALLOWED_HOSTS = ['91.107.123.35', 'uhrwerk.ru', 'www.uhrwerk.ru']
 
 
 # Application definition
@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'ois.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db-name',
-        'USER': 'user',
-        'PASSWORD': 'password',
+        'NAME': 'holik',
+        'USER': 'owner',
+        'PASSWORD': 'GoodGod',
         'HOST': 'localhost',
         'PORT': '5432',
     }
